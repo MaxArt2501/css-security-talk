@@ -172,39 +172,25 @@
   box-shadow: 0 0 0.5em rgba(black, 0.5);
 }
 
-.slide-teal {
-  --slide-bg: teal;
-}
-
-.jsdoc {
-  position: absolute;
-  color: white;
-  top: 7em;
-  left: 15em;
-  white-space: nowrap;
-  font-weight: bold;
-  transform: rotate(30deg);
-
-  img {
-    height: 1.5em;
-    vertical-align: -0.15em;
+.big-x {
+  &-wrapper {
+    position: relative;
   }
-}
-.tslogo {
-  position: absolute;
-  top: 0.5em;
-  left: 10em;
 
-  img {
-    height: 1.5em;
-    background-color: white;
-    transform: rotate(15deg);
+  &::before, &::after {
+    content: "";
+    top: -25%;
+    left: 50%;
+    height: 150%;
+    width: .5em;
+    border-radius: .25em;
+    transform: rotate(45deg);
+    background: rgba(red, .9);
+    position: absolute;
   }
-}
-
-.threedi-spin {
-  animation: threedi-spin linear 2s infinite alternate;
-  display: inline-block;
+  &::after {
+    transform: rotate(-45deg);
+  }
 }
 
 .sketchy-arrow {
@@ -215,44 +201,11 @@
   filter: drop-shadow(0.075em 0.075em 0 white);
 }
 
-.poppin {
-  animation: poppin 1s infinite;
-  transform-origin: 0 100%;
-  font-size: 300%;
-}
-.poppin::before {
-  content: "🎉";
-}
-
-@keyframes threedi-spin {
-  from {
-    transform: scale(1, 1) rotate3d(1, 0, 0, 0) rotate3d(0, 1, 0, 0)
-      rotate3d(0, 0, 1, 0);
-  }
-  to {
-    transform: scale(1.5, -1.5) rotate3d(1, 0, 0, 30deg)
-      rotate3d(0, 1, 0, 45deg) rotate3d(0, 0, 1, 90deg);
-  }
-}
-
 @keyframes sketchy {
   from {
     --sketchy-arrow-random-seed: 20;
   }
   to {
     --sketchy-arrow-random-seed: 40;
-  }
-}
-
-@keyframes poppin {
-  0%,
-  100% {
-    transform: rotate(-45deg) scaleX(1) rotate(45deg);
-  }
-  50% {
-    transform: rotate(-45deg) scaleX(0.75) rotate(45deg);
-  }
-  60% {
-    transform: rotate(-45deg) scaleX(1.25) rotate(45deg);
   }
 }

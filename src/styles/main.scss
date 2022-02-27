@@ -12,6 +12,10 @@ body {
   margin: 0;
 }
 
+em {
+  color: var(--brand-color);
+}
+
 .presentation-toolbar,
 .presentation-nav {
   button {

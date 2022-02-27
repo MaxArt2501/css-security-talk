@@ -60,7 +60,8 @@ const vendors = () => src([
     'node_modules/p-slides/css/**/*.css',
     'node_modules/prismjs/prism.js',
     'node_modules/prismjs/components/prism-typescript.js',
-    'node_modules/prismjs/themes/prism-okaidia.css'
+    'node_modules/prismjs/components/prism-jsx.js',
+    'node_modules/prismjs/themes/prism.css'
   ], { base: './node_modules' })
   .pipe(dest('public/vendor'));
 exports.static = parallel(assets, vendors);
