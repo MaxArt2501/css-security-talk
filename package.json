@@ -18,7 +18,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gulp-sass": "^5.1.0",
     "p-slides": "^0.1.0",
     "prismjs": "^1.16.0"
   },
@@ -27,6 +26,7 @@
     "gh-pages": "^2.0.1",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-tap": "^1.0.1",
     "rimraf": "^2.6.2",

