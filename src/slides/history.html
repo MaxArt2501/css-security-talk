@@ -96,6 +96,57 @@
 <p-slide>
   <h1 class="center">Basta?</h1>
 </p-slide>
+<p-slide class="center">
+  <h1>&Egrave; anche peggio</h1>
+  <p-fragment><h4>quando c'è di mezzo anche <span class="javascript">JavaScript</span></h4></p-fragment>
+  <p-fragment><br>L'URL di un link può essere cambiato<br><em>migliaia di volte al secondo</em></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: SVG complesso</h3>
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;a href="...">
+  &lt;svg>
+    &lt;filter id="fx">
+      ...
+    &lt;/filter>
+    &lt;path filter="url(#fx)" d="..."/>
+  &lt;/svg>
+&lt;/a></code></pre>
+    <div class="center">
+      <pre class="language-css"><code>a:visited { fill: currentColor; }</code></pre>
+      <br>
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso" style="height: 3em;">
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso, col colore dei link visitati" style="height: 3em; filter: hue-rotate(30deg);">
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: trasformazioni 3D</h3>
+  <p-fragment>
+    <p>👉 Efficace soprattutto sul <span aria-label="mobile">📱</span></p><br>
+  </p-fragment>
+  <p-fragment>
+    <h3 class="our-header">Esempio: Ambient Light Sensor API</h3>
+    <p-fragment>
+      👉 La <em>luce del display</em> ci tradisce! 😱
+    </p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: CSS Paint API</h3>
+  <p-fragment>
+    <p>👉 Fixato in <img src="img/chrome.svg" alt="Chrome logo" style="height: 1em;"> Chrome 67</p><br>
+  </p-fragment>
+  <p-fragment>
+    <h3 class="our-header">Esempio: transizioni di colore</h3>
+    <p-fragment>
+      👉 Fixato in <img src="img/chrome.svg" alt="Chrome logo" style="height: 1em;"> Chrome 92
+    </p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">&hellip; disabilitiamo <span class="javascript">JavaScript</span>?</h3>
+</p-slide>
 <p-slide>
   <div class="two-columns align-center">
     <h4 class="center">Si può <em>chiedere all'utente</em> quali siti ha visitato?</h4>
@@ -105,7 +156,7 @@
           Prego inserire i siti visitati:
         </p>
         <div style="border: .05em solid; height: 4em; padding: .25em">
-          https://www.s|
+          https://www.you|
         </div>
       </p-fragment>
       <p-fragment class="big-x"></p-fragment>
@@ -184,4 +235,7 @@
     <span style="font-size: 400%; text-align: end;">👬</span>
     <div><em>Limitare</em> lo stato "visitato" ai soli link <em>azionati da quella origine</em></div>
   </div>
+</p-slide>
+<p-slide>
+  <img src="img/spilling.jpg" alt="Una condotta che fa acqua da tutte le parti" class="full-media">
 </p-slide>
