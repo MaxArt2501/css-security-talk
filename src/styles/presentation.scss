@@ -53,6 +53,28 @@
   --sketchy-arrow-tip-size: 20;
 }
 
+p-deck::after {
+  position: fixed;
+  bottom: .5em;
+  left: 0;
+  right: 0;
+  font-size: 50%;
+  text-align: center;
+  content: '@MaxArt2501';
+  color: #001236;
+  z-index: 100;
+}
+
+p-fragment.landing {
+  position: absolute;
+  transform: scale(3);
+  transition: opacity var(--fragment-duration, 300ms), transform var(--fragment-duration, 300ms);
+
+  &[aria-hidden="false"], p-deck[mode="speaker"] & {
+    transform: scale(1);
+  }
+}
+
 .our-header {
   border-left: var(--brand-color) solid 0.15em;
   padding: 0.5em;
@@ -175,6 +197,11 @@
 
 .shadow {
   box-shadow: 0 0 0.5em rgba(black, 0.5);
+}
+
+.javascript {
+  background-color: #f7df1e;
+  padding: 0 .25em;
 }
 
 .big-x {

