@@ -279,3 +279,19 @@ p-fragment.landing {
   clip-path: polygon(.125em 0, calc(100% - .125em) 0, 100% .125em, 100% calc(100% - .125em), calc(100% - .125em) 100%, .125em 100%, 0 calc(100% - .125em), 0 .125em);
   margin: -.025em;
 }
+
+.padme-anakin {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  img {
+    height: 100%;
+  }
+}
