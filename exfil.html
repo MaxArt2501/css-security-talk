@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Exfiltration test</title>
+  <link rel="stylesheet" href="exfil.css">
+  <link rel="stylesheet" href="injected.css">
+</head>
+<body>
+  <h1>CSS Exfiltration test</h1>
+  <p>Here's an anti-CSRF token:</p>
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <p>You can't see it because it's in a <code>&lt;input type="hidden"></code> element, but it's there.</p>
+</body>
+</html>
