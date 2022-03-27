@@ -1,0 +1,126 @@
+<p-slide>
+  <h1 class="center">Come difendersi?</h1>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Non usare <code>value="..."</code></h2>
+  <p class="center">Meglio impostare con <b class="javascript">JavaScript</b></p>
+  <div class="two-columns">
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-html"><code>&lt;script>document
+  .querySelector('input[name=csrf]')
+  .value = "1234abcd";
+&lt;/script></code></pre>
+      <p-fragment class="big-x" index="1"></p-fragment>
+    </p-fragment>
+    <p-fragment>
+      <pre class="language-css"><code>script {
+  display: block;
+  font-family: EvilSniff;
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>Web Components</h1>
+  <p-fragment>limitano l'area di effetto dei fogli di stile</p-fragment>
+</p-slide>
+<p-slide>
+  <div class="encapsulated-css">
+    <div style="width: 100%;">
+      <code>body</code>
+      <p-fragment class="making evil" index="1"></p-fragment>
+    </div>
+  </div>
+  <p-fragment class="encapsulated-css">
+    <div style="width: 33%;">
+      <code>main-header</code>
+    </div>
+    <div style="width: 34%;">
+      <code>main-content</code>
+    </div>
+    <div style="width: 33%;">
+      <code>main-footer</code>
+    </div>
+  </p-fragment>
+  <p-fragment class="encapsulated-css">
+    <div style="width: 16%;">
+      <code>my-</code>
+      <p-fragment class="making evil" index="2"></p-fragment>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+      <p-fragment class="making target"></p-fragment>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 16%;">
+      <code>my-</code>
+    </div>
+  </p-fragment>
+  <p-fragment index="1">
+    <div class="sketchy-arrow" style="width: 4em;top: 41%;left: 55.5%;transform: rotate(60deg);">
+      <span style="position: relative;top: -0.25em;transform: rotate(23deg);display: inline-block;">❌</span>
+    </div>
+  </p-fragment>
+  <p-fragment index="2">
+    <div class="sketchy-arrow" style="width: 8em;top: 62%;left: 19%;transform: scale(1, -1) rotate(-30deg);">
+      <span style="position: relative;top: 0.25em;transform: rotate(23deg);display: inline-block;">❌</span>
+    </div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Content Security Policy</h1>
+</p-slide>
+<p-slide class="center">
+  <pre class="language-css big self-center"><code>Content-Security-Policy: default-src 'self'</code></pre>
+  <pre class="language-html big self-center"><code>&lt;meta http-equiv="Content-Security-Policy"&nbsp;
+      content="default-src 'self'"></code></pre>
+</p-slide>
+<p-slide>
+  <h3 class="center">Direttive CSP</h3>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👉 <code>script-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>style-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>img-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>font-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>media-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>frame-src</code></p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide class="center">
+  <h3>Report</h3>
+  <pre class="language-js"><code>Report-To: {
+    "group": "csp-endpoint",
+    "max_age": 10886400,
+    "endpoints": [{ "url": "https://test.com/csp" }]
+  }
+Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
+  <p-fragment>
+    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri https://test.com/csp</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="center">
+  <h1>CDN?</h1>
+  <p-fragment>
+    <h3>Anche nelle CDN può finire contenuto <em>non sicuro</em> o <em>compromesso</em></h3>
+  </p-fragment>
+</p-slide>
