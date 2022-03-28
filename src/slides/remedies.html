@@ -124,3 +124,23 @@ Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
     <h3>Anche nelle CDN può finire contenuto <em>non sicuro</em> o <em>compromesso</em></h3>
   </p-fragment>
 </p-slide>
+<p-slide>
+  <h3 class="center">Version pinning</h3>
+  <p-fragment class="big-x-wrapper">
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bootstrap.min.css">
+&lt;script src="https://cdn.com/jquery/latest/jquery.min.js">&lt;/script></code></pre>
+    <p-fragment class="big-x"></p-fragment>
+  </p-fragment>
+  <p-fragment>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bootstrap.min.css">
+&lt;script src="https://cdn.com/jquery/3.6.1/jquery.min.js">&lt;/script></code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Subresource Intergrity (SRI)</h3>
+  <p-fragment class="self-center">
+    <pre class="language-html big"><code>&lt;link rel="stylesheet"
+  src="https://cdn.internal.com/our-font/our-font.css"
+  integrity="sha384-oqVuA..." crossorigin="anonymous"></code></pre>
+  </p-fragment>
+</p-slide>
