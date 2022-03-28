@@ -7,8 +7,8 @@
   <div class="two-columns">
     <p-fragment class="big-x-wrapper">
       <pre class="language-html"><code>&lt;script>document
-  .querySelector('input[name=csrf]')
-  .value = "1234abcd";
+.querySelector('input[name=csrf]')
+.value = "1234abcd";
 &lt;/script></code></pre>
       <p-fragment class="big-x" index="1"></p-fragment>
     </p-fragment>
@@ -33,13 +33,13 @@
   </div>
   <p-fragment class="encapsulated-css">
     <div style="width: 33%;">
-      <code>main-header</code>
+      <code>my-header</code>
     </div>
     <div style="width: 34%;">
-      <code>main-content</code>
+      <code>my-content</code>
     </div>
     <div style="width: 33%;">
-      <code>main-footer</code>
+      <code>my-footer</code>
     </div>
   </p-fragment>
   <p-fragment class="encapsulated-css">
@@ -115,7 +115,7 @@
   }
 Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
   <p-fragment>
-    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri https://test.com/csp</code></pre>
+    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri //test.com/csp</code></pre>
   </p-fragment>
 </p-slide>
 <p-slide class="center">
@@ -127,13 +127,13 @@ Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
 <p-slide>
   <h3 class="center">Version pinning</h3>
   <p-fragment class="big-x-wrapper">
-    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bootstrap.min.css">
-&lt;script src="https://cdn.com/jquery/latest/jquery.min.js">&lt;/script></code></pre>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bs.min.css">
+&lt;script src="https://cdn.com/jquery/latest/$.min.js">&lt;/script></code></pre>
     <p-fragment class="big-x"></p-fragment>
   </p-fragment>
   <p-fragment>
-    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bootstrap.min.css">
-&lt;script src="https://cdn.com/jquery/3.6.0/jquery.min.js">&lt;/script></code></pre>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bs.min.css">
+&lt;script src="https://cdn.com/jquery/3.6.0/$.min.js">&lt;/script></code></pre>
   </p-fragment>
 </p-slide>
 <p-slide>
