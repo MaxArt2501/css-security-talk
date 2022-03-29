@@ -55,12 +55,12 @@
 
 p-deck::after {
   position: fixed;
-  bottom: .5em;
+  bottom: 0.5em;
   left: 0;
   right: 0;
   font-size: 50%;
   text-align: center;
-  content: '@MaxArt2501';
+  content: "@MaxArt2501";
   color: #001236;
   z-index: 100;
 }
@@ -68,9 +68,11 @@ p-deck::after {
 p-fragment.landing {
   position: absolute;
   transform: scale(3);
-  transition: opacity var(--fragment-duration, 300ms), transform var(--fragment-duration, 300ms);
+  transition: opacity var(--fragment-duration, 300ms),
+    transform var(--fragment-duration, 300ms);
 
-  &[aria-hidden="false"], p-deck[mode="speaker"] & {
+  &[aria-hidden="false"],
+  p-deck[mode="speaker"] & {
     transform: scale(1);
   }
 }
@@ -89,11 +91,15 @@ p-fragment.landing {
 }
 
 .cover {
-  --slide-bg: var(--brand-color);
+  --slide-bg: black;
   background: var(--slide-bg) no-repeat center/133vmin
     url("../img/logo-antreem-contour.svg");
-  color: white;
   text-align: center;
+  color: white;
+
+  h1, a {
+    color: var(--brand-color);
+  }
 
   small {
     display: block;
@@ -200,7 +206,7 @@ p-fragment.landing {
 
 .javascript {
   background-color: #f7df1e;
-  padding: 0 .25em;
+  padding: 0 0.25em;
 }
 
 .big-x {
@@ -208,15 +214,16 @@ p-fragment.landing {
     position: relative;
   }
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     top: -25%;
     left: 50%;
     height: 150%;
-    width: .5em;
-    border-radius: .25em;
+    width: 0.5em;
+    border-radius: 0.25em;
     transform: rotate(45deg);
-    background: rgba(red, .9);
+    background: rgba(red, 0.9);
     position: absolute;
   }
   &::after {
@@ -242,42 +249,51 @@ p-fragment.landing {
   }
 }
 
-
 .lcd-display {
   display: grid;
   justify-content: center;
-  padding: .5em;
-  margin: .5em;
-  background-color:olive;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: khaki;
   grid-auto-flow: column;
-  grid-template-columns: repeat(var(--lcd-display-count, 4), .25em 1em .5em);
-  grid-template-rows: .25em 1em .25em 1em .25em;
-}
-.lcd-display > :nth-child(7n + 6),
-.lcd-display > :nth-child(7n + 7) {
-  width: .3em;
-}
-.lcd-display > :nth-child(7n + 1),
-.lcd-display > :nth-child(7n + 6) {
-  grid-row: 2;
-}
-.lcd-display > :nth-child(7n + 2),
-.lcd-display > :nth-child(7n + 7) {
-  grid-row: 4;
-}
-.lcd-display > :nth-child(7n + 3) {
-  grid-row: 1;
-}
-.lcd-display > :nth-child(7n + 4) {
-  grid-row: 3;
-}
-.lcd-display > :nth-child(7n + 5) {
-  grid-row: 5;
-}
-.lcd-display > .on {
-  background-color: currentColor;
-  clip-path: polygon(.125em 0, calc(100% - .125em) 0, 100% .125em, 100% calc(100% - .125em), calc(100% - .125em) 100%, .125em 100%, 0 calc(100% - .125em), 0 .125em);
-  margin: -.025em;
+  grid-template-columns: repeat(var(--lcd-display-count, 4), 0.25em 1em 0.5em);
+  grid-template-rows: 0.25em 1em 0.25em 1em 0.25em;
+
+  & > :nth-child(7n + 6),
+  & > :nth-child(7n + 7) {
+    width: 0.3em;
+  }
+  & > :nth-child(7n + 1),
+  & > :nth-child(7n + 6) {
+    grid-row: 2;
+  }
+  & > :nth-child(7n + 2),
+  & > :nth-child(7n + 7) {
+    grid-row: 4;
+  }
+  & > :nth-child(7n + 3) {
+    grid-row: 1;
+  }
+  & > :nth-child(7n + 4) {
+    grid-row: 3;
+  }
+  & > :nth-child(7n + 5) {
+    grid-row: 5;
+  }
+  & > .on {
+    background-color: currentColor;
+    clip-path: polygon(
+      0.125em 0,
+      calc(100% - 0.125em) 0,
+      100% 0.125em,
+      100% calc(100% - 0.125em),
+      calc(100% - 0.125em) 100%,
+      0.125em 100%,
+      0 calc(100% - 0.125em),
+      0 0.125em
+    );
+    margin: -0.025em;
+  }
 }
 
 .padme-anakin {
@@ -301,7 +317,7 @@ p-fragment.landing {
 
   > div {
     display: flex;
-    padding: .25em;
+    padding: 0.25em;
     box-sizing: border-box;
     height: 3em;
     align-items: center;
@@ -311,13 +327,13 @@ p-fragment.landing {
     border-radius: 1em;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
-      width: .1em;
-      height: .5em;
+      width: 0.1em;
+      height: 0.5em;
       background-color: currentColor;
-      left: calc(50% - .125em);
-      top: -.25em;
+      left: calc(50% - 0.125em);
+      top: -0.25em;
       z-index: 5;
     }
   }
