@@ -49,6 +49,7 @@
   --sliding-duration: 0ms;
   --fragment-duration: 100ms;
   --brand-color: #f60;
+  --brand-color-gfy: #822a7c;
   --sketchy-arrow-width: 0.1em;
   --sketchy-arrow-tip-size: 20;
 }
@@ -170,7 +171,13 @@ p-fragment.landing {
     margin-bottom: 0;
   }
   a {
+    font-weight: bold;
+  }
+  a:first-of-type {
     color: var(--brand-color);
+  }
+  a:last-of-type {
+    color: var(--brand-color-gfy);
   }
 }
 .my-face {
