@@ -1,9 +1,9 @@
 CSS spies on us
 ===============
 
-Slides for a talk about sicurity threats with CSS. # slides, about 30 minutes.
+Slides for a talk about sicurity threats with CSS. 93 slides, about 30 minutes.
 
-Originally conceived for the [2022 Italian CSS Day](https://2022.cssday.it/) (in Italian), Verona, 2022-04-01.
+Originally conceived for the [2022 Italian CSS Day](https://2022.cssday.it/) (in Italian), Faenza, 2022-04-01.
 
 Built on top of [P-Slides](https://github.com/MaxArt2501/p-slides)!
 
@@ -18,6 +18,13 @@ To start the presentation in development mode:
 3. `npm run serve`
 
 Or `npm run build` to just build it, then serve `/public` with your HTTP server of choice.
+
+## Demo
+
+A little CSS exfiltration demo:
+1. `node exfil.js`
+2. open [exfil.html](./exfil.html) in your browser of choice (you can also use a HTTP server to serve it)
+3. enjoy the horror!
 
 ## Tests
 

