@@ -1,0 +1,18 @@
+<p-slide class="align-center" style="flex-direction: row; font-size: 2em;">
+  <img src="../img/firefox.svg" alt="Firefox" style="height: 2em;"><span>❓</span>
+</p-slide>
+<p-slide>
+  <h1 class="center">Scroll-driven animations</h1>
+  <p-notes>Sono supportate da Firefox? ... no! Ma lo saranno presto</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-css">.container {
+  overflow: hidden;
+  --can-scroll: 0;
+  animation: scrollCheck;
+  animation-timeline: scroll(self);
+}
+@keyframes scrollCheck {
+  from, to { --can-scroll: 1; }
+}</code></pre>
+</p-slide>

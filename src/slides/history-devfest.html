@@ -1,0 +1,313 @@
+<p-slide>
+  <h1 class="center">A che serve CSS?</h1>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML</h1>
+      <img src="img/ugly-car.jpg" alt="An ugly car, but still a car" style="max-width: 100%;">
+    </div>
+    <p-fragment class="center">
+      <h1 class="meme-text" style="margin-bottom: -1em;">HTML+CSS</h1>
+      <img src="img/beautiful-car.jpg" alt="An beautiful car, but still a car" style="max-width: 100%;">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="justify-end">
+  <h1 class="meme-text center uppercase">CSS&hellip; un linguaggio?!</h1>
+  <img src="img/laugh.webp" alt="A man laughing" class="full-media">
+</p-slide>
+<p-slide class="align-center">
+  <h1 class="center">Eppure&hellip;</h1>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">~2000</h3>
+  <div class="two-columns align-center">
+    <div>
+      <a href="//nowhere.really">F.C. Barcelona</a><br>
+      <a href=".">Real Madrid C.F.</a><br>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return getComputedStyle(a)
+    .color === 'rgb(85, 26, 139)'
+}</code></pre>
+      <p-fragment class="big-x"></p-fragment>
+    </p-fragment>
+  </div>
+  <p-notes>Non funziona più perché <code>getComputedStyle</code> ora restituisce sempre lo stile del link non visitato</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">~2010</h3>
+  <div class="two-columns">
+    <div>
+      <pre class="language-css"><code>a:visited {
+  border-radius: 10% 20% 30% 40%;
+  box-shadow: 0 0 50em blue;
+  text-shadow: 0 0 50em red;
+  transform: skew(10deg 10deg);
+  filter: url('effect.svg#fx');
+}</code></pre>
+    </div>
+    <p-fragment class="big-x-wrapper">
+      <pre class="language-js"><code>function isVisited(a) {
+  return new Promise(resolve => {
+    const start = Date.now();
+    requestAnimationFrame(now =>
+      resolve(now - start > 17)
+    );
+  });
+}</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/wontfix.png" alt="Screenshot of Chrome Bugtracker marking the issue 'Visited links can be detected via redraw timing' as 'Won't fix'" class="full-media">
+</p-slide>
+<p-slide>
+  <img src="img/panic.gif" alt="Kermit panicking" class="full-media">
+</p-slide>
+<p-slide class="center">
+  <h1>Ma</h1>
+  <p-fragment>
+    <p>I browser sono sempre più veloci</p>
+  </p-fragment>
+  <p-fragment>
+    <p>👇</p>
+    <p>Exploit ormai inaffidabile</p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Inoltre</h3>
+  <p-fragment class="center">
+    <p>possiamo stilizzare <code>:visited</code> solo con</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <ul>
+      <li>👉 <code>color</code></li>
+      <li>👉 <code>background-color</code></li>
+      <li>👉 <code>border-color</code></li>
+      <li>👉 <code>outline-color</code></li>
+      <li>👉 <code>column-rule-color</code></li>
+      <li>👉 <code>fill</code>, <code>stroke</code> (solo per i colori)</li>
+    </ul>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="padme-anakin">
+    <img src="img/visited-1.jpg" alt="Anakin: :visited fa acqua da tutte le parti">
+    <p-fragment>
+      <img src="img/visited-2.jpg" alt="Padme: Ma ormai l'hanno sistemato, giusto?">
+    </p-fragment>
+    <p-fragment style="grid-column-end: span 2;">
+      <img src="img/visited-3.jpg" alt="Anakin: Padme: L'hanno sistemato... giusto?">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h1>&Egrave; anche peggio</h1>
+  <p-fragment><h4>quando c'è di mezzo anche <span class="javascript">JavaScript</span></h4></p-fragment>
+  <p-fragment><br>L'URL di un link può essere cambiato<br><em>migliaia di volte al secondo</em></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="our-header">Esempio: SVG complesso</h3>
+  <div class="two-columns">
+    <pre class="language-html"><code>&lt;a href="...">
+  &lt;svg>
+    &lt;filter id="fx">...&lt;/filter>
+    &lt;path filter="url(#fx)"
+          d="..."/>
+  &lt;/svg>
+&lt;/a></code></pre>
+    <div class="center">
+      <pre class="language-css"><code>a:visited { fill: currentColor; }</code></pre>
+      <br>
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso" style="height: 3em;">
+      <img src="img/complex-svg.png" alt="Esempio di SVG complesso, col colore dei link visitati" style="height: 3em; filter: hue-rotate(30deg);">
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="center">&hellip; disabilitiamo <span class="javascript">JavaScript</span>?</h3>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <h4 class="center">Si può <em>chiedere all'utente</em> quali siti ha visitato?</h4>
+    <div style="position: relative; font-size: 80%;">
+      <p-fragment style="display: block;">
+        <p>
+          Prego inserire i siti visitati:
+        </p>
+        <div style="border: .05em solid; height: 4em; padding: .25em">
+          https://www.you|
+        </div>
+      </p-fragment>
+      <p-fragment class="big-x"></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <div>
+      <pre class="language-html"><code>&lt;a href="http://site1.com">&lt;/a>
+&lt;a href="http://site2.com">&lt;/a>
+&lt;a href="http://site3.com">&lt;/a>
+...</code></pre>
+      <pre class="language-css"><code>a:visited { background: black; }</code></pre>
+    </div>
+    <div>
+      <div class="lcd-display">
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+        <div class="on"></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="on"></div>
+        <div class="on"></div>
+      </div>
+      <p>Inserire il numero:</p>
+      <div style="border: .05em solid; padding: .25em">|</div>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="center">E quindi&hellip;</h3>
+  <img src="img/visited-once-and-4all.png" alt="Chromium Issue 713521: Eliminate :visited privacy issues once and for all" style="height: 2em;">
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">⌚</span>
+    <div><em>Ridurre</em> i tempi per cui un link è considerato "visitato"</div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">🙅‍♀️</span>
+    <div>
+      <em>Limitare</em> lo stato "visitato" ai soli link <em>della stessa origine</em><br>
+      <p-fragment><small>(&hellip; Sì, ma Google?)</small></p-fragment>
+    </div>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns align-center">
+    <span style="font-size: 400%; text-align: end;">👬</span>
+    <div><em>Limitare</em> lo stato "visitato" ai soli link <em>azionati da quella origine</em></div>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/spilling.jpg" alt="Una condotta che fa acqua da tutte le parti" class="full-media">
+</p-slide>
+<p-slide>
+  <div class="padme-anakin">
+    <img src="img/visited-1.jpg" alt="Anakin: :visited fa acqua da tutte le parti" style="grid-area: 1 / 1;">
+    <img src="img/visited-2.jpg" alt="Padme: Ma ormai l'hanno sistemato, giusto?" style="grid-area: 1 / 2;">
+    <img src="img/visited-3.jpg" alt="Anakin: Padme: L'hanno sistemato... giusto?" style="grid-area: 2 / 1 / auto / span 2;">
+    <p-fragment style="grid-area: 1 / 1 / span 2 / span 2">
+      <img src="img/visited-4.jpg" alt="Anakin: Sì!">
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h3 class="center">
+    <a href="https://developer.chrome.com/blog/visited-links">Cronologia link <em>partizionata</em></a>
+  </h3>
+  <p-fragment class="self-center">
+    Un link verso una pagina visitata nel dominio A sarà <code>:visited</code> se:
+  </p-fragment>
+  <p-fragment class="self-center" style="margin-top: .5em;">
+    <ul>
+      <li>
+        <p-fragment>👉 siamo nel dominio A;</p-fragment>
+      </li>
+      <li>
+        <p-fragment>👉 siamo nel dominio B</p-fragment><br>
+        <p-fragment><span style="visibility: hidden;">👉 </span><em>ma</em> il link è stato cliccato qui.</p-fragment>
+      </li>
+    </ul>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <p-fragment index="2"></p-fragment>
+  <p-fragment index="3"></p-fragment>
+  <p-fragment index="0" class="pointer-link"></p-fragment>
+  <div class="site">
+    <header>
+      <span><b>bob.io</b>/links</span>
+    </header>
+    <h3 class="center">Links</h3>
+    <ul>
+      <li>Alice's blog <a data-index="0">alice.dev/blog</a></li>
+      <li>Alice's merch <a data-index="2">alice.dev/merch</a></li>
+      <li>Pippo's site <a data-index="3">pippo.it</a></li>
+    </ul>
+  </div>
+  <p-fragment>
+    <div class="site">
+      <header>
+        <span><b>alice.dev</b>/menu</span>
+      </header>
+      <h3 class="center">Menu</h3>
+      <ul>
+        <li>Blog <a data-index="0">alice.dev/blog</a></li>
+        <li>Merch <a data-index="2">alice.dev/merch</a></li>
+        <li>Pippo's site <a data-index="3">pippo.it</a></li>
+      </ul>
+    </div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <p-fragment index="2"></p-fragment>
+  <p-fragment index="3"></p-fragment>
+  <p-fragment index="0" class="pointer-link"></p-fragment>
+  <div class="site">
+    <header>
+      <span><b>bob.io</b>/links</span>
+    </header>
+    <h3 class="center">Links</h3>
+    <ul>
+      <li>Alice's blog <a data-index="0">alice.dev/blog</a></li>
+      <li>Alice's merch <a data-index="2">alice.dev/merch</a></li>
+      <li>Pippo's site <a data-index="3">pippo.it</a></li>
+    </ul>
+  </div>
+  <div class="site">
+    <header>
+      <span><b>alice.dev</b>/menu</span>
+    </header>
+    <h3 class="center">Menu</h3>
+    <ul>
+      <li>Blog <a data-index="0">alice.dev/blog</a></li>
+      <li>Merch <a data-index="2">alice.dev/merch</a></li>
+      <li>Pippo's site <a>pippo.it</a></li>
+    </ul>
+  </div>
+</p-slide>
+<p-slide>
+  <video src="img/yes.mp4" class="full-media" autoplay loop muted></video>
+  <p-notes>Disponibile solo da Chrome 136. Niente FF o Safari</p-notes>
+</p-slide>

@@ -240,6 +240,7 @@ p-fragment.landing {
 
 .sketchy-arrow {
   position: absolute;
+  background: url('data:image/svg+xml,<svg viewBox="0 0 16 9" xmlns="http://www.w3.org/2000/svg"><path d="M0,.5A19.3,19.3 0 0 1 16,9l-1-5 1,5-4.5-1.8" fill="none" stroke="black"/></svg>');
   background: paint(sketchy-arrow);
   aspect-ratio: 16 / 9;
   animation: sketchy 0.3s steps(3) infinite;
@@ -355,4 +356,123 @@ p-fragment.landing {
     inset: 0;
     border-radius: 1em;
   }
+}
+
+gfy-blob {
+  display: none;
+  position: absolute;
+  height: 14em;
+  width: 14em;
+  right: -2em;
+  bottom: -2em;
+  z-index: -1;
+  filter: brightness(2);
+
+  p-slide[aria-hidden='false'] & {
+    display: block;
+  }
+}
+
+.site {
+  border: .1em solid;
+  font-size: 75%;
+  width: 12em;
+  height: 100%;
+  background: white;
+
+  p-fragment:has(&) {
+    opacity: 1;
+    transition: transform calc(var(--fragment-duration) * 2);
+    transform: translateX(-10em);
+    z-index: -1;
+
+    &[aria-hidden="false"] {
+      transform: translateX(0);
+    }
+  }
+
+  header {
+    padding: .5em;
+    border-bottom: inherit;
+    display: flex;
+    gap: .25em;
+    background: #eee;
+
+    span {
+      flex: 1;
+      border-radius: 10em;
+      padding: 0 .5em;
+      border: .1em solid;
+      background: white;
+    }
+
+    &::before {
+      content: '🏠';
+      filter: contrast(0) brightness(0.1);
+    }
+  }
+  ul {
+    list-style-type: disc;
+    padding-inline: 1.5em .5em;
+  }
+  li {
+    margin-block: .5em;
+  }
+  li a {
+    display: block;
+    color: blue;
+    text-decoration: underline;
+    transition: color 10ms calc(var(--fragment-duration) * 4) linear;
+  }
+}
+p-slide:has(.site) {
+  flex-direction: row;
+  gap: 1em;
+}
+
+.pointer-link {
+  position: absolute;
+  background: url(../img/cursor-default.svg) no-repeat;
+  width: 1em;
+  aspect-ratio: 19 / 22;
+  inset: 0 auto auto 0;
+  translate: -2em -2em;
+  transition: translate calc(var(--fragment-duration) * 4);
+
+  &[aria-hidden='false'] {
+    translate: 7em 7em;
+    animation: click calc(var(--fragment-duration) * 4) calc(var(--fragment-duration) * 4) linear 1 forwards;
+  }
+
+  [index="2"][aria-hidden='false'] ~ & {
+    translate: 7em 9.2em;
+    animation-name: click-alt;
+  }
+  [index="3"][aria-hidden='false'] ~ & {
+    translate: 6em 11.4em;
+    animation-name: click;
+  }
+}
+
+@for $i from 0 through 5 {
+  p-fragment[index="#{$i}"][aria-hidden='false']:has(~ .site) ~ :is(.site, p-fragment:has(> .site)) li a[data-index="#{$i}"] {
+    color: purple;
+  }
+}
+
+@keyframes click {
+  0% { scale: 1; background-image: url(../img/cursor-pointer.svg); }
+  25% { scale: 1; }
+  25.1% { scale: .8; }
+  74.9% { scale: .8; }
+  75% { scale: 1; }
+  100% { scale: 1; background-image: url(../img/cursor-pointer.svg); }
+}
+@keyframes click-alt {
+  0% { scale: 1; background-image: url(../img/cursor-pointer.svg); }
+  25% { scale: 1; }
+  25.1% { scale: .8; }
+  74.9% { scale: .8; }
+  75% { scale: 1; }
+  100% { scale: 1; background-image: url(../img/cursor-pointer.svg); }
 }
