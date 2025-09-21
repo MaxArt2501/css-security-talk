@@ -53,7 +53,7 @@ function js() {
 exports.js = js;
 exports['js+reload'] = series(js, reload);
 
-const assets = () => src('static/**/*').pipe(dest('public'));
+const assets = () => src(['static/**/*', 'exfil.*']).pipe(dest('public'));
 const vendors = () => src([
     'node_modules/p-slides/components/**/*.js',
     'node_modules/p-slides/*.js',
