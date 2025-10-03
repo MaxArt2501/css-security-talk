@@ -576,3 +576,7 @@ p-slide:has(.site) {
   75% { scale: 1; }
   100% { scale: 1; background-image: url(../img/cursor-pointer.svg); }
 }
+
+[href="//nowhere.really"] ~ a {
+  color: rgb(85, 26, 139);
+}
