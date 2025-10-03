@@ -148,19 +148,22 @@ p-fragment.landing {
     --slide-bg: #f0f0f0;
     --slide-padding: 1em;
     --border-width: calc(var(--slide-padding) / 20);
-    display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto 1fr auto;
     justify-content: space-between;
     color: #1e1e1e;
     background-image:
-      linear-gradient(to right, currentColor var(--border-width), #fff 0, calc(100% - var(--border-width)), currentColor 0),
-      linear-gradient(to bottom, currentColor var(--border-width), #fff 0, calc(100% - var(--border-width)), currentColor 0),
-      radial-gradient(circle at calc(2 * var(--slide-padding)) calc(100% - 2 * var(--slide-padding)), #fff calc(var(--slide-padding) - var(--border-width)), currentColor 0, var(--slide-padding), transparent 0),
-      radial-gradient(circle at calc(100% - 2 * var(--slide-padding)) calc(2 * var(--slide-padding)), #fff calc(var(--slide-padding) - var(--border-width)), currentColor 0, var(--slide-padding), transparent 0);
+    linear-gradient(to right, currentColor var(--border-width), #fff 0, calc(100% - var(--border-width)), currentColor 0),
+    linear-gradient(to bottom, currentColor var(--border-width), #fff 0, calc(100% - var(--border-width)), currentColor 0),
+    radial-gradient(circle at calc(2 * var(--slide-padding)) calc(100% - 2 * var(--slide-padding)), #fff calc(var(--slide-padding) - var(--border-width)), currentColor 0, var(--slide-padding), transparent 0),
+    radial-gradient(circle at calc(100% - 2 * var(--slide-padding)) calc(2 * var(--slide-padding)), #fff calc(var(--slide-padding) - var(--border-width)), currentColor 0, var(--slide-padding), transparent 0);
     background-repeat: no-repeat;
     background-size: calc(100% - 2 * var(--slide-padding)) calc(100% - 4 * var(--slide-padding)), calc(100% - 4 * var(--slide-padding)) calc(100% - 2 * var(--slide-padding)), 100%, 100%;
     background-position: var(--slide-padding) calc(2 * var(--slide-padding)), calc(2 * var(--slide-padding)) var(--slide-padding), 0 0, 0 0;
+
+    &[aria-hidden='false'] {
+      display: grid;
+    }
 
     .devfest-logo, .devfest-footer {
       background-color: var(--slide-bg);
